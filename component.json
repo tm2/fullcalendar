@@ -1,0 +1,16 @@
+{
+  "name": "fullcalendar",
+  "repo": "tm2/fullcalendar",
+  "description": "TM2 Calendar Component",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "scripts": [
+    "/build/fullcalendar/fullcalendar/fullcalendar.js"
+  ],
+  "styles": [
+    "/build/fullcalendar/fullcalendar/fullcalendar.css"
+  ]
+}
