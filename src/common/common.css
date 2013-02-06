@@ -6,9 +6,14 @@
 .fc-widget-content {  /* <td>, usually */
 	border: 1px solid #ccc;
 	}
+
+td.fc-widget-content {
+	background: lightgray;
+}
+	
 	
 .fc-state-highlight { /* <td> today cell */ /* TODO: add .fc-today to <th> */
-	background: #ffc;
+	/*background: #ffc;*/
 	}
 	
 .fc-cell-overlay { /* semi-transparent rectangle while dragging */

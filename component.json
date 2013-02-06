@@ -4,13 +4,16 @@
   "description": "TM2 Calendar Component",
   "version": "0.0.1",
   "keywords": [],
-  "dependencies": {},
+  "dependencies": {
+
+    },
   "development": {},
   "license": "MIT",
+  "main": "fullcalendar.js",
   "scripts": [
-    "/build/fullcalendar/fullcalendar/fullcalendar.js"
+    "fullcalendar.js"
   ],
   "styles": [
-    "/build/fullcalendar/fullcalendar/fullcalendar.css"
+    "fullcalendar.css"
   ]
 }

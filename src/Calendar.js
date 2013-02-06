@@ -230,6 +230,9 @@ function Calendar(element, options, eventSources) {
 			
 			ignoreWindowResize--;
 			currentView.trigger('viewDisplay', _element);
+
+			//used as our custom divs didnt get re-rendered when view was changed
+			currentView.setWidth(content.width())
 		}
 	}
 	

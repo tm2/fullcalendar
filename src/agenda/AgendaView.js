@@ -168,8 +168,11 @@ function AgendaView(element, calendar, viewName) {
 		var s;
 		var i;
 		var d;
+		var c;
 		var maxd;
 		var minutes;
+		var hours;
+		var time;
 		var slotNormal = opt('slotMinutes') % 15 == 0;
 		
 		s =
@@ -273,10 +276,15 @@ function AgendaView(element, calendar, viewName) {
 		s =
 			"<table class='fc-agenda-slots' style='width:100%' cellspacing='0'>" +
 			"<tbody>";
-		d = zeroDate();
+		
+		d = parseDate(formatDate(new Date(), "ddd MMM dd yyyy"))
+		
 		maxd = addMinutes(cloneDate(d), maxMinute);
 		addMinutes(d, minMinute);
 		slotCnt = 0;
+
+		console.log(calendar)
+		console.log(d)
 		for (i=0; d < maxd; i++) {
 			minutes = d.getMinutes();
 			s +=
@@ -284,8 +292,14 @@ function AgendaView(element, calendar, viewName) {
 				"<th class='fc-agenda-axis " + headerClass + "'>" +
 				((!slotNormal || !minutes) ? formatDate(d, opt('axisFormat')) : '&nbsp;') +
 				"</th>" +
-				"<td class='" + contentClass + "'>" +
-				"<div style='position:relative'>&nbsp;</div>" +
+				"<td class='" + contentClass + "'>"
+
+			for (c=0; c < colCnt; c++) {
+				s += "<div class='fc-session-slot fc-col" + c + "'>" +
+					 "<div>" + formatDate(d, "HH:mm") + "</div>" +
+					 "</div>"
+			}
+			s +=
 				"</td>" +
 				"</tr>";
 			addMinutes(d, opt('slotMinutes'));
@@ -315,11 +329,11 @@ function AgendaView(element, calendar, viewName) {
 			headCell = dayHeadCells.eq(i);
 			headCell.html(formatDate(date, colFormat));
 			bodyCell = dayBodyCells.eq(i);
-			if (+date == +today) {
+			/*if (+date == +today) {
 				bodyCell.addClass(tm + '-state-highlight fc-today');
 			}else{
 				bodyCell.removeClass(tm + '-state-highlight fc-today');
-			}
+			}*/
 			setDayID(headCell.add(bodyCell), date);
 		}
 	}
@@ -389,6 +403,7 @@ function AgendaView(element, calendar, viewName) {
 		
 		colWidth = Math.floor((slotTableWidth - axisWidth) / colCnt);
 		setOuterWidth(dayHeadCells.slice(0, -1), colWidth);
+		$(".fc-session-slot").width(colWidth);
 	}
 	
 

@@ -24,17 +24,19 @@
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay'
 			},
+			columnFormat: {
+                month: 'ddd',
+                week: 'ddd dS MMM',
+                day: 'dddd dS MMM'
+            },
+
+            selectable: true,
+            defaultView: 'agendaWeek',
+            allDaySlot: false,
+            slotMinutes:15,
 			editable: true,
+			/*weekends: false,*/
 			events: [
-				{
-					title: 'All Day Event',
-					start: new Date(y, m, 1)
-				},
-				{
-					title: 'Long Event',
-					start: new Date(y, m, d-5),
-					end: new Date(y, m, d-2)
-				},
 				{
 					id: 999,
 					title: 'Repeating Event',
@@ -70,7 +72,37 @@
 					end: new Date(y, m, 29),
 					url: 'http://google.com/'
 				}
+			],
+
+			sessions: [
+				{
+					start: new Date(y, m, d-2, 8, 0),
+					end: new Date(y, m, d-2, 16, 0),
+					colour: "#FF0000"
+				},
+				{
+					start: new Date(y, m, d-1, 8, 0),
+					end: new Date(y, m, d-1, 16, 0),
+					colour: "#00FF00"
+				},
+				{
+					start: new Date(y, m, d, 8, 0),
+					end: new Date(y, m, d, 16, 0),
+					colour: "#0000FF"
+				},
+				{
+					start: new Date(y, m, d+1, 8, 0),
+					end: new Date(y, m, d+1, 16, 0),
+					colour: "#FFFF00"
+				},
+				{
+					start: new Date(y, m, d+2, 8, 0),
+					end: new Date(y, m, d+2, 16, 0),
+					colour: "#FFFF00"
+				}
 			]
+
+
 		});
 		
 	});
