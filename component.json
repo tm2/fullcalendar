@@ -9,11 +9,11 @@
     },
   "development": {},
   "license": "MIT",
-  "main": "build/fullcalendar/fullcalendar.js",
+  "main": "build/fullcalendar/fullcalendar/fullcalendar.js",
   "scripts": [
-    "build/fullcalendar/fullcalendar.js"
+    "build/fullcalendar/fullcalendar/fullcalendar.js"
   ],
   "styles": [
-    "build/fullcalendar/fullcalendar.css"
+    "build/fullcalendar/fullcalendar/fullcalendar.css"
   ]
 }
