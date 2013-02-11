@@ -21,17 +21,22 @@
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay'
 			},
+			columnFormat: {
+                month: 'ddd',
+                week: 'ddd dS MMM',
+                day: 'dddd dS MMM'
+            },
+
+            selectable: true,
+            defaultView: 'agendaWeek',
+            dayClick: function(date, allDay, jsEvent, view) {
+            	console.log("clicked")
+		    },
+
+            allDaySlot: false,
+            slotMinutes:15,
 			editable: true,
 			events: [
-				{
-					title: 'All Day Event',
-					start: new Date(y, m, 1)
-				},
-				{
-					title: 'Long Event',
-					start: new Date(y, m, d-5),
-					end: new Date(y, m, d-2)
-				},
 				{
 					id: 999,
 					title: 'Repeating Event',
@@ -67,9 +72,42 @@
 					end: new Date(y, m, 29),
 					url: 'http://google.com/'
 				}
+			],
+
+			sessions: [
+				{
+					start: new Date(y, m, d, 6, 0),
+					end: new Date(y, m, d, 14, 0),
+					colour: "#ff0000"
+				},
+				{
+					start: new Date(y, m, d+1, 9, 0),
+					end: new Date(y, m, d+1, 17, 0),
+				},
+				{
+					start: new Date(y, m, d+2, 7, 0),
+					end: new Date(y, m, d+2, 16, 0),
+				},
+				{
+					start: new Date(y, m, d+3, 11, 0),
+					end: new Date(y, m, d+3, 16, 0),
+					colour: "#ffff00"
+				},
+				{
+					start: new Date(y, m, d+4, 6, 0),
+					end: new Date(y, m, d+4, 16, 0),
+					colour: "#00ffff"
+				},
+				{
+					start: new Date(y, m, d+5, 8, 0),
+					end: new Date(y, m, d+5, 16, 0),
+				},
+				{
+					start: new Date(y, m, d+6, 9, 0),
+					end: new Date(y, m, d+6, 16, 0),
+				}
 			]
 		});
-		
 	});
 
 </script>

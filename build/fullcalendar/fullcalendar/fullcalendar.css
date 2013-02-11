@@ -5,7 +5,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Tue Sep 4 23:38:33 2012 -0700
+ * Date: Mon Feb 11 15:10:51 2013 +0000
  *
  */
 
@@ -126,6 +126,11 @@ html .fc,
 .fc-widget-content {  /* <td>, usually */
 	border: 1px solid #ccc;
 	}
+
+td.fc-widget-content {
+	background: lightgray;
+}
+	
 	
 .fc-state-highlight { /* <td> today cell */ /* TODO: add .fc-today to <th> */
 	/*background: #ffc;*/
@@ -476,6 +481,35 @@ table.fc-border-separate {
 /* Agenda Week View, Agenda Day View
 ------------------------------------------------------------------------*/
 
+.fc-session-slot{
+	position:relative; 
+	font-size:8px; 
+	color:gray; 
+	/*border-top:1px solid white; 
+	border-bottom:1px;*/
+	float:left;
+}
+
+/*.fc-session-slot.day-1{
+	width:100%;
+	max-width:100%;
+}
+
+.fc-session-slot.day-5{
+	width:20%;
+	max-width: 20%
+}
+
+.fc-session-slot.day-7{
+	width:14.28571428571429%;
+	max-width:14.28571428571429% ;
+}*/
+
+.fc-session-slot.highlight{
+	border-left: 1px solid orange;
+	border-right: 1px solid orange;
+}
+
 .fc-agenda table {
 	border-collapse: separate;
 	}
@@ -551,11 +585,11 @@ table.fc-border-separate {
 
 .fc-agenda-slots tr.fc-minor th,
 .fc-agenda-slots tr.fc-minor td {
-	border-top-style: dotted;
+	border-top-style: none;
 	}
 	
 .fc-agenda-slots tr.fc-minor th.ui-widget-header {
-	*border-top-style: solid; /* doesn't work with background in IE6/7 */
+	*border-top-style: none; /* doesn't work with background in IE6/7 */
 	}
 	
 
