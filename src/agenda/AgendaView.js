@@ -130,7 +130,6 @@ function AgendaView(element, calendar, viewName) {
 	
 	disableTextSelection(element.addClass('fc-agenda'));
 	
-	
 	function renderAgenda(c) {
 		colCnt = c;
 		updateOptions();
@@ -283,8 +282,6 @@ function AgendaView(element, calendar, viewName) {
 		addMinutes(d, minMinute);
 		slotCnt = 0;
 
-		console.log(calendar)
-		console.log(d)
 		for (i=0; d < maxd; i++) {
 			minutes = d.getMinutes();
 			s +=
@@ -295,7 +292,7 @@ function AgendaView(element, calendar, viewName) {
 				"<td class='" + contentClass + "'>"
 
 			for (c=0; c < colCnt; c++) {
-				s += "<div class='fc-session-slot fc-col" + c + "'>" +
+				s += "<div class='fc-session-slot fc-col" + c + " ts-" + c + "-" + formatDate(d, "HH-mm") + "'>" +
 					 "<div>" + formatDate(d, "HH:mm") + "</div>" +
 					 "</div>"
 			}

@@ -221,16 +221,19 @@ function Calendar(element, options, eventSources) {
 			elementOuterWidth = element.outerWidth();
 			
 			header.updateTitle(currentView.title);
-			var today = new Date();
+			/*var today = new Date();
 			if (today >= currentView.start && today < currentView.end) {
 				header.disableButton('today');
 			}else{
 				header.enableButton('today');
-			}
+			}*/
 			
 			ignoreWindowResize--;
 			currentView.trigger('viewDisplay', _element);
-
+			
+			if(typeof currentView.renderSessions == 'function')
+				currentView.renderSessions()
+			
 			//used as our custom divs didnt get re-rendered when view was changed
 			currentView.setWidth(content.width())
 		}

@@ -32,10 +32,13 @@
 
             selectable: true,
             defaultView: 'agendaWeek',
+            dayClick: function(date, allDay, jsEvent, view) {
+            	console.log("clicked")
+		    },
+
             allDaySlot: false,
             slotMinutes:15,
 			editable: true,
-			/*weekends: false,*/
 			events: [
 				{
 					id: 999,
@@ -76,35 +79,38 @@
 
 			sessions: [
 				{
-					start: new Date(y, m, d-2, 8, 0),
-					end: new Date(y, m, d-2, 16, 0),
-					colour: "#FF0000"
+					start: new Date(y, m, d, 6, 0),
+					end: new Date(y, m, d, 14, 0),
+					colour: "#ff0000"
 				},
 				{
-					start: new Date(y, m, d-1, 8, 0),
-					end: new Date(y, m, d-1, 16, 0),
-					colour: "#00FF00"
+					start: new Date(y, m, d+1, 9, 0),
+					end: new Date(y, m, d+1, 17, 0),
 				},
 				{
-					start: new Date(y, m, d, 8, 0),
-					end: new Date(y, m, d, 16, 0),
-					colour: "#0000FF"
-				},
-				{
-					start: new Date(y, m, d+1, 8, 0),
-					end: new Date(y, m, d+1, 16, 0),
-					colour: "#FFFF00"
-				},
-				{
-					start: new Date(y, m, d+2, 8, 0),
+					start: new Date(y, m, d+2, 7, 0),
 					end: new Date(y, m, d+2, 16, 0),
-					colour: "#FFFF00"
+				},
+				{
+					start: new Date(y, m, d+3, 11, 0),
+					end: new Date(y, m, d+3, 16, 0),
+					colour: "#ffff00"
+				},
+				{
+					start: new Date(y, m, d+4, 6, 0),
+					end: new Date(y, m, d+4, 16, 0),
+					colour: "#00ffff"
+				},
+				{
+					start: new Date(y, m, d+5, 8, 0),
+					end: new Date(y, m, d+5, 16, 0),
+				},
+				{
+					start: new Date(y, m, d+6, 9, 0),
+					end: new Date(y, m, d+6, 16, 0),
 				}
 			]
-
-
 		});
-		
 	});
 
 </script>
