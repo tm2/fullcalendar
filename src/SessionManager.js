@@ -16,8 +16,6 @@ function SessionManager(options, _sessions) {
     -----------------------------------------------------------------------------*/
     
     function fetchSessions() {
-        console.log("refetching sessions")
-
         if (sessions) {
             if ($.isFunction(sessions)) {
                 reportSessions(sessions());
