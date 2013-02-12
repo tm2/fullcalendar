@@ -31,6 +31,39 @@ function AgendaDayView(element, calendar) {
 		t.end = t.visEnd = end;
 		renderAgenda(1);
 	}
+
+	function clearSessions(){
+		$("tbody").find(".active").css("background", "transparent").removeClass("active");
+	}
+
+	function renderSessions(sessions) {
+		var interval = calendar.options.slotMinutes
+		var slotNum = ((t.end - t.start)/(1000*60*interval));
+
+		if(!sessions) return;
+		
+		var _sessions = sessions.filter(function (el) {
+			return (el.start < t.end) && (el.end > t.start)
+		});
+		
+		for(var s=0; s < _sessions.length; s++)
+		{
+			var session = _sessions[s];
+			var selector = "";
+			var time = cloneDate(t.start)
+
+			for(var i=0; i<slotNum; i++)
+			{
+				if((time >= session.start) && (time < session.end))
+				{
+					selector += ".ts-" + time.getDay() + formatDate(time, "-HH-mm") + ", ";
+				}
+				addMinutes(time, interval);
+			}
+
+			$("tbody").find(selector).addClass("active").css("background", session.colour? session.colour : "white")
+		}
+	}
 	
 
 }
