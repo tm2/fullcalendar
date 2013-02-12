@@ -1,6 +1,6 @@
 
  
-function Calendar(element, options, eventSources, sessions) {
+function Calendar(element, options, eventSources) {
 	var t = this;
 	
 	// exports
