@@ -8,6 +8,7 @@ function AgendaWeekView(element, calendar) {
 	// exports
 	t.render = render;
 	t.renderSessions = renderSessions;
+	t.clearSessions = clearSessions;
 	
 	
 	// imports
@@ -43,33 +44,25 @@ function AgendaWeekView(element, calendar) {
 		renderAgenda(weekends ? 7 : 5);
 	}
 
-	function renderSessions() {
-		/*var d1 = new Date().getTime();*/
+	function clearSessions(){
 		$("tbody").find(".active").css("background", "transparent").removeClass("active");
+	}
 
+	function renderSessions(sessions) {
+		/*var d1 = new Date().getTime();*/
 		var options = calendar.options;
 		var interval = options.slotMinutes
 		var slotNum = ((t.end - t.start)/(1000*60*interval));
-		var _sessions = [];
 
-		if(!options.sessions) return
-
-		if ($.isFunction(options.sessions)) {
-			_sessions = options.sessions()
-		}
-		else if ($.isArray(options.sessions)) {
-			_sessions = options.sessions
-		}
-
-		var sessions = _sessions.filter(function (el) {
+		if(!sessions) return;
+		
+		var _sessions = sessions.filter(function (el) {
 			return (el.start < t.end) && (el.end > t.start)
 		});
 		
-		if(!sessions || sessions.length < 1) return;
-		
-		for(var s=0; s < sessions.length; s++)
+		for(var s=0; s < _sessions.length; s++)
 		{
-			var session = sessions[s];
+			var session = _sessions[s];
 			var selector = "";
 			var time = cloneDate(t.start)
 
@@ -77,10 +70,12 @@ function AgendaWeekView(element, calendar) {
 			{
 				if((time >= session.start) && (time < session.end))
 				{
+					console.log("gets here")
 					selector += ".ts-" + time.getDay() + formatDate(time, "-HH-mm") + ", ";
 				}
 				addMinutes(time, interval);
 			}
+
 			$("tbody").find(selector).addClass("active").css("background", session.colour? session.colour : "white")
 		}
 		/*console.log(new Date().getTime() - d1)*/

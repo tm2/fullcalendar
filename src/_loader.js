@@ -42,6 +42,7 @@ js('main.js');
 js('Calendar.js');
 js('Header.js');
 js('EventManager.js');
+js('SessionManager.js');
 js('date_util.js');
 js('util.js');
 

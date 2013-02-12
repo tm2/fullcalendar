@@ -1,8 +1,7 @@
 
  
-function Calendar(element, options, eventSources) {
+function Calendar(element, options, eventSources, sessions) {
 	var t = this;
-	
 	
 	// exports
 	t.options = options;
@@ -12,6 +11,9 @@ function Calendar(element, options, eventSources) {
 	t.reportEvents = reportEvents;
 	t.reportEventChange = reportEventChange;
 	t.rerenderEvents = rerenderEvents;
+	t.refetchSessions = refetchSessions
+	t.reportSessions = reportSessions
+	t.rerenderSessions = rerenderSessions
 	t.changeView = changeView;
 	t.select = select;
 	t.unselect = unselect;
@@ -34,7 +36,9 @@ function Calendar(element, options, eventSources) {
 	EventManager.call(t, options, eventSources);
 	var isFetchNeeded = t.isFetchNeeded;
 	var fetchEvents = t.fetchEvents;
-	
+
+	SessionManager.call(t, options, options.sessions);
+	var fetchSessions = t.fetchSessions
 	
 	// locals
 	var _element = element[0];
@@ -218,6 +222,7 @@ function Calendar(element, options, eventSources) {
 			currentView.sizeDirty = false;
 			currentView.eventsDirty = false;
 			updateEvents(forceEventRender);
+			updateSessions();
 			
 			elementOuterWidth = element.outerWidth();
 			
@@ -232,8 +237,8 @@ function Calendar(element, options, eventSources) {
 			ignoreWindowResize--;
 			currentView.trigger('viewDisplay', _element);
 			
-			if(typeof currentView.renderSessions == 'function')
-				currentView.renderSessions()
+			/*if(typeof currentView.renderSessions == 'function')
+				currentView.renderSessions()*/
 			
 			//used as our custom divs didnt get re-rendered when view was changed
 			currentView.setWidth(content.width())
@@ -327,17 +332,30 @@ function Calendar(element, options, eventSources) {
 			rerenderEvents();
 		}
 	}
+
+	function updateSessions() {
+		//possibly some caching like above events 
+		refetchSessions();
+	}
 	
 	
 	function refetchEvents() {
 		fetchEvents(currentView.visStart, currentView.visEnd); // will call reportEvents
 	}
-	
+
+	function refetchSessions() {
+		fetchSessions() // will call reportSessions
+	} 
 	
 	// called when event data arrives
 	function reportEvents(_events) {
 		events = _events;
 		rerenderEvents();
+	}
+
+	function reportSessions(_sessions) {
+		sessions = _sessions;
+		rerenderSessions();
 	}
 	
 	
@@ -354,6 +372,13 @@ function Calendar(element, options, eventSources) {
 			currentView.clearEvents();
 			currentView.renderEvents(events, modifiedEventID);
 			currentView.eventsDirty = false;
+		}
+	}
+
+	function rerenderSessions() {
+		if (elementVisible()) {
+			currentView.clearSessions();
+			currentView.renderSessions(sessions);
 		}
 	}
 	

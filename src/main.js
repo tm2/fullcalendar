@@ -36,7 +36,6 @@ $.fn.fullCalendar = function(options) {
 		eventSources.push(options.events);
 		delete options.events;
 	}
-	
 
 	options = $.extend(true, {},
 		defaults,
