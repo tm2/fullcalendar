@@ -6,6 +6,8 @@ function AgendaDayView(element, calendar) {
 	
 	
 	// exports
+	t.renderSessions = renderSessions;
+	t.clearSessions = clearSessions;
 	t.render = render;
 	
 	
@@ -56,9 +58,10 @@ function AgendaDayView(element, calendar) {
 			{
 				if((time >= session.start) && (time < session.end))
 				{
-					selector += ".ts-" + time.getDay() + formatDate(time, "-HH-mm") + ", ";
+					selector += ".ts-0" + formatDate(time, "-HH-mm") + ", ";
 				}
 				addMinutes(time, interval);
+				
 			}
 
 			$("tbody").find(selector).addClass("active").css("background", session.colour? session.colour : "white")

@@ -6,6 +6,8 @@ function MonthView(element, calendar) {
 	
 	
 	// exports
+	t.renderSessions = renderSessions;
+	t.clearSessions = clearSessions;
 	t.render = render;
 	
 	
@@ -47,6 +49,10 @@ function MonthView(element, calendar) {
 		t.visEnd = visEnd;
 		renderBasic(6, rowCnt, nwe ? 5 : 7, true);
 	}
-	
-	
+
+	function clearSessions(){
+		$("tbody").find(".active").css("background", "transparent").removeClass("active");
+	}
+
+	function renderSessions(sessions) {}
 }
