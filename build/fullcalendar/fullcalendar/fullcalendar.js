@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Tue Feb 12 09:30:34 2013 +0000
+ * Date: Tue Feb 12 15:19:43 2013 +0000
  *
  */
  
@@ -148,7 +148,6 @@ $.fn.fullCalendar = function(options) {
 		eventSources.push(options.events);
 		delete options.events;
 	}
-	
 
 	options = $.extend(true, {},
 		defaults,
@@ -178,9 +177,8 @@ function setDefaults(d) {
 
 
  
-function Calendar(element, options, eventSources) {
+function Calendar(element, options, eventSources, sessions) {
 	var t = this;
-	
 	
 	// exports
 	t.options = options;
@@ -190,6 +188,9 @@ function Calendar(element, options, eventSources) {
 	t.reportEvents = reportEvents;
 	t.reportEventChange = reportEventChange;
 	t.rerenderEvents = rerenderEvents;
+	t.refetchSessions = refetchSessions
+	t.reportSessions = reportSessions
+	t.rerenderSessions = rerenderSessions
 	t.changeView = changeView;
 	t.select = select;
 	t.unselect = unselect;
@@ -212,7 +213,9 @@ function Calendar(element, options, eventSources) {
 	EventManager.call(t, options, eventSources);
 	var isFetchNeeded = t.isFetchNeeded;
 	var fetchEvents = t.fetchEvents;
-	
+
+	SessionManager.call(t, options, options.sessions);
+	var fetchSessions = t.fetchSessions
 	
 	// locals
 	var _element = element[0];
@@ -396,6 +399,7 @@ function Calendar(element, options, eventSources) {
 			currentView.sizeDirty = false;
 			currentView.eventsDirty = false;
 			updateEvents(forceEventRender);
+			updateSessions();
 			
 			elementOuterWidth = element.outerWidth();
 			
@@ -410,8 +414,8 @@ function Calendar(element, options, eventSources) {
 			ignoreWindowResize--;
 			currentView.trigger('viewDisplay', _element);
 			
-			if(typeof currentView.renderSessions == 'function')
-				currentView.renderSessions()
+			/*if(typeof currentView.renderSessions == 'function')
+				currentView.renderSessions()*/
 			
 			//used as our custom divs didnt get re-rendered when view was changed
 			currentView.setWidth(content.width())
@@ -505,17 +509,30 @@ function Calendar(element, options, eventSources) {
 			rerenderEvents();
 		}
 	}
+
+	function updateSessions() {
+		//possibly some caching like above events 
+		refetchSessions();
+	}
 	
 	
 	function refetchEvents() {
 		fetchEvents(currentView.visStart, currentView.visEnd); // will call reportEvents
 	}
-	
+
+	function refetchSessions() {
+		fetchSessions() // will call reportSessions
+	} 
 	
 	// called when event data arrives
 	function reportEvents(_events) {
 		events = _events;
 		rerenderEvents();
+	}
+
+	function reportSessions(_sessions) {
+		sessions = _sessions;
+		rerenderSessions();
 	}
 	
 	
@@ -532,6 +549,13 @@ function Calendar(element, options, eventSources) {
 			currentView.clearEvents();
 			currentView.renderEvents(events, modifiedEventID);
 			currentView.eventsDirty = false;
+		}
+	}
+
+	function rerenderSessions() {
+		if (elementVisible()) {
+			currentView.clearSessions();
+			currentView.renderSessions(sessions);
 		}
 	}
 	
@@ -1233,7 +1257,40 @@ function EventManager(options, _sources) {
 
 
 }
+function SessionManager(options, _sessions) {
+    var t = this;
 
+    t.fetchSessions = fetchSessions;
+    
+    // imports
+    var trigger = t.trigger;
+    var getView = t.getView;
+    var reportSessions = t.reportSessions;
+    
+    
+    // locals
+    var sessions = _sessions || [];
+    
+    /* Fetching
+    -----------------------------------------------------------------------------*/
+    
+    function fetchSessions() {
+        if (sessions) {
+            if ($.isFunction(sessions)) {
+                reportSessions(sessions());
+            }
+            else if ($.isArray(sessions)) {
+                reportSessions(sessions);
+            }
+            else {
+                reportSessions([]);
+            }
+        }
+        else{
+            reportSessions([])
+        }
+    }
+}
 
 fc.addDays = addDays;
 fc.cloneDate = cloneDate;
@@ -2730,6 +2787,7 @@ function AgendaWeekView(element, calendar) {
 	// exports
 	t.render = render;
 	t.renderSessions = renderSessions;
+	t.clearSessions = clearSessions;
 	
 	
 	// imports
@@ -2765,33 +2823,25 @@ function AgendaWeekView(element, calendar) {
 		renderAgenda(weekends ? 7 : 5);
 	}
 
-	function renderSessions() {
-		/*var d1 = new Date().getTime();*/
+	function clearSessions(){
 		$("tbody").find(".active").css("background", "transparent").removeClass("active");
+	}
 
+	function renderSessions(sessions) {
+		/*var d1 = new Date().getTime();*/
 		var options = calendar.options;
 		var interval = options.slotMinutes
 		var slotNum = ((t.end - t.start)/(1000*60*interval));
-		var _sessions = [];
 
-		if(!options.sessions) return
-
-		if ($.isFunction(options.sessions)) {
-			_sessions = options.sessions()
-		}
-		else if ($.isArray(options.sessions)) {
-			_sessions = options.sessions
-		}
-
-		var sessions = _sessions.filter(function (el) {
+		if(!sessions) return;
+		
+		var _sessions = sessions.filter(function (el) {
 			return (el.start < t.end) && (el.end > t.start)
 		});
 		
-		if(!sessions || sessions.length < 1) return;
-		
-		for(var s=0; s < sessions.length; s++)
+		for(var s=0; s < _sessions.length; s++)
 		{
-			var session = sessions[s];
+			var session = _sessions[s];
 			var selector = "";
 			var time = cloneDate(t.start)
 
@@ -2803,6 +2853,7 @@ function AgendaWeekView(element, calendar) {
 				}
 				addMinutes(time, interval);
 			}
+
 			$("tbody").find(selector).addClass("active").css("background", session.colour? session.colour : "white")
 		}
 		/*console.log(new Date().getTime() - d1)*/
