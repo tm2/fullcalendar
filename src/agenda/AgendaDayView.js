@@ -35,7 +35,8 @@ function AgendaDayView(element, calendar) {
 	}
 
 	function clearSessions(){
-		$("tbody").find(".active").css("background", "transparent").removeClass("active");
+		var nodes = $("tbody").find(".active").css("background", "transparent").removeClass("active");
+		nodes.find(".title").html("");
 	}
 
 	function renderSessions(sessions) {
@@ -64,7 +65,9 @@ function AgendaDayView(element, calendar) {
 				
 			}
 
-			$("tbody").find(selector).addClass("active").css("background", session.colour? session.colour : "white")
+			var nodes = $("tbody").find(selector).addClass("active").css("background", session.colour? session.colour : "white")
+			if (session.title)
+				nodes.find(".title").html(" - " + session.title)
 		}
 	}
 	

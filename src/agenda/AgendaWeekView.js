@@ -45,13 +45,12 @@ function AgendaWeekView(element, calendar) {
 	}
 
 	function clearSessions(){
-		$("tbody").find(".active").css("background", "transparent").removeClass("active");
+		var nodes = $("tbody").find(".active").css("background", "transparent").removeClass("active");
+		nodes.find(".title").html("");
 	}
 
 	function renderSessions(sessions) {
-		/*var d1 = new Date().getTime();*/
-		var options = calendar.options;
-		var interval = options.slotMinutes
+		var interval = calendar.options.slotMinutes
 		var slotNum = ((t.end - t.start)/(1000*60*interval));
 
 		if(!sessions) return;
@@ -75,8 +74,9 @@ function AgendaWeekView(element, calendar) {
 				addMinutes(time, interval);
 			}
 
-			$("tbody").find(selector).addClass("active").css("background", session.colour? session.colour : "white")
+			var nodes = $("tbody").find(selector).addClass("active").css("background", session.colour? session.colour : "white")
+			if (session.title)
+				nodes.find(".title").html(" - " + session.title)
 		}
-		/*console.log(new Date().getTime() - d1)*/
 	}
 }

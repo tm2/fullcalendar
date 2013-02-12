@@ -293,7 +293,8 @@ function AgendaView(element, calendar, viewName) {
 
 			for (c=0; c < colCnt; c++) {
 				s += "<div class='fc-session-slot fc-col" + c + " ts-" + c + "-" + formatDate(d, "HH-mm") + "'>" +
-					 "<div>" + formatDate(d, "HH:mm") + "</div>" +
+					 "<span>" + formatDate(d, "HH:mm") + "</span>" +
+					 "<span class='title'></span>" + 
 					 "</div>"
 			}
 			s +=
