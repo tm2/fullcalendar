@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Mon Feb 11 15:10:51 2013 +0000
+ * Date: Tue Feb 12 09:30:34 2013 +0000
  *
  */
  
@@ -229,6 +229,7 @@ function Calendar(element, options, eventSources) {
 	var ignoreWindowResize = 0;
 	var date = new Date();
 	var events = [];
+	var sessions = [];
 	var _dragElement;
 	
 	
@@ -2768,10 +2769,21 @@ function AgendaWeekView(element, calendar) {
 		/*var d1 = new Date().getTime();*/
 		$("tbody").find(".active").css("background", "transparent").removeClass("active");
 
-		var interval = calendar.options.slotMinutes
+		var options = calendar.options;
+		var interval = options.slotMinutes
 		var slotNum = ((t.end - t.start)/(1000*60*interval));
+		var _sessions = [];
 
-		var sessions = calendar.options.sessions.filter(function (el) {
+		if(!options.sessions) return
+
+		if ($.isFunction(options.sessions)) {
+			_sessions = options.sessions()
+		}
+		else if ($.isArray(options.sessions)) {
+			_sessions = options.sessions
+		}
+
+		var sessions = _sessions.filter(function (el) {
 			return (el.start < t.end) && (el.end > t.start)
 		});
 		
