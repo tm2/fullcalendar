@@ -47,10 +47,21 @@ function AgendaWeekView(element, calendar) {
 		/*var d1 = new Date().getTime();*/
 		$("tbody").find(".active").css("background", "transparent").removeClass("active");
 
-		var interval = calendar.options.slotMinutes
+		var options = calendar.options;
+		var interval = options.slotMinutes
 		var slotNum = ((t.end - t.start)/(1000*60*interval));
+		var _sessions = [];
 
-		var sessions = calendar.options.sessions.filter(function (el) {
+		if(!options.sessions) return
+
+		if ($.isFunction(options.sessions)) {
+			_sessions = options.sessions()
+		}
+		else if ($.isArray(options.sessions)) {
+			_sessions = options.sessions
+		}
+
+		var sessions = _sessions.filter(function (el) {
 			return (el.start < t.end) && (el.end > t.start)
 		});
 		

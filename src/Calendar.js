@@ -51,6 +51,7 @@ function Calendar(element, options, eventSources) {
 	var ignoreWindowResize = 0;
 	var date = new Date();
 	var events = [];
+	var sessions = [];
 	var _dragElement;
 	
 	
