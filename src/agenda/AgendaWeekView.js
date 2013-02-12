@@ -70,7 +70,6 @@ function AgendaWeekView(element, calendar) {
 			{
 				if((time >= session.start) && (time < session.end))
 				{
-					console.log("gets here")
 					selector += ".ts-" + time.getDay() + formatDate(time, "-HH-mm") + ", ";
 				}
 				addMinutes(time, interval);
