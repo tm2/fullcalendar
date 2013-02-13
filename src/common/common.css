@@ -1,6 +1,19 @@
+.grid {
+	display: table;
+	width:100%;
+}
+
+.grid > .column {
+	display: table-cell;
+	vertical-align: top;
+}
 
 /* Cell Styles
 ------------------------------------------------------------------------*/
+
+.fc-widget-header {
+	background: #ffffcc;
+}
 
 .fc-widget-header,    /* <th>, usually */
 .fc-widget-content {  /* <td>, usually */
@@ -164,10 +177,19 @@ a.fc-event {
 	}
 	
 .fc-event-skin {
-	border-color: #36c;     /* default BORDER color */
-	background-color: #36c; /* default BACKGROUND color */
-	color: #fff;            /* default TEXT color */
-	}
+	border-color: #888;     /* default BORDER color */
+	/*background-color: #36c;  default BACKGROUND color */
+	color: black;            /* default TEXT color */
+
+	background-image: -ms-linear-gradient(top, #FF8888 0%, #FF0000 60%);
+	background-image: -moz-linear-gradient(top, #FF8888 0%, #FF0000 60%);
+	background-image: -o-linear-gradient(top, #FF8888 0%, #FF0000 60%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FF8888), color-stop(0.6, #FF0000));
+	background-image: -webkit-linear-gradient(top, #FF8888 0%, #FF0000 60%);
+	background-image: linear-gradient(to bottom, #FF8888 0%, #FF0000 60%);
+}
+
+
 	
 .fc-event-inner {
 	position: relative;
@@ -181,6 +203,8 @@ a.fc-event {
 .fc-event-time,
 .fc-event-title {
 	padding: 0 1px;
+	font-size: 8px;
+	line-height: 10px;
 	}
 	
 .fc .ui-resizable-handle { /*** TODO: don't use ui-resizable anymore, change class ***/

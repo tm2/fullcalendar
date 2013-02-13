@@ -6,25 +6,8 @@
 	position:relative; 
 	font-size:8px; 
 	color:gray; 
-	/*border-top:1px solid white; 
-	border-bottom:1px;*/
 	float:left;
 }
-
-/*.fc-session-slot.day-1{
-	width:100%;
-	max-width:100%;
-}
-
-.fc-session-slot.day-5{
-	width:20%;
-	max-width: 20%
-}
-
-.fc-session-slot.day-7{
-	width:14.28571428571429%;
-	max-width:14.28571428571429% ;
-}*/
 
 .fc-session-slot.highlight{
 	border-left: 1px solid orange;
@@ -128,7 +111,17 @@
 	z-index: 2;
 	width: 100%;
 	overflow: hidden;
+	word-break:break-all;
+	
 	}
+
+.fc-event-content li {
+	line-height:normal;
+}
+
+.fc-event-content li > i {
+	color:green;
+}
 	
 .fc-event-vert .fc-event-time {
 	white-space: nowrap;
