@@ -5,7 +5,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Tue Feb 12 16:57:22 2013 +0000
+ * Date: Wed Feb 13 16:01:12 2013 +0000
  *
  */
 
@@ -118,9 +118,22 @@ html .fc,
 	}
 	
 	
+.grid {
+	display: table;
+	width:100%;
+}
+
+.grid > .column {
+	display: table-cell;
+	vertical-align: top;
+}
 
 /* Cell Styles
 ------------------------------------------------------------------------*/
+
+.fc-widget-header {
+	background: #ffffcc;
+}
 
 .fc-widget-header,    /* <th>, usually */
 .fc-widget-content {  /* <td>, usually */
@@ -284,10 +297,19 @@ a.fc-event {
 	}
 	
 .fc-event-skin {
-	border-color: #36c;     /* default BORDER color */
-	background-color: #36c; /* default BACKGROUND color */
-	color: #fff;            /* default TEXT color */
-	}
+	border-color: #888;     /* default BORDER color */
+	/*background-color: #36c;  default BACKGROUND color */
+	color: black;            /* default TEXT color */
+
+	background-image: -ms-linear-gradient(top, #FF8888 0%, #FF0000 60%);
+	background-image: -moz-linear-gradient(top, #FF8888 0%, #FF0000 60%);
+	background-image: -o-linear-gradient(top, #FF8888 0%, #FF0000 60%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FF8888), color-stop(0.6, #FF0000));
+	background-image: -webkit-linear-gradient(top, #FF8888 0%, #FF0000 60%);
+	background-image: linear-gradient(to bottom, #FF8888 0%, #FF0000 60%);
+}
+
+
 	
 .fc-event-inner {
 	position: relative;
@@ -301,6 +323,8 @@ a.fc-event {
 .fc-event-time,
 .fc-event-title {
 	padding: 0 1px;
+	font-size: 8px;
+	line-height: 10px;
 	}
 	
 .fc .ui-resizable-handle { /*** TODO: don't use ui-resizable anymore, change class ***/
@@ -485,25 +509,8 @@ table.fc-border-separate {
 	position:relative; 
 	font-size:8px; 
 	color:gray; 
-	/*border-top:1px solid white; 
-	border-bottom:1px;*/
 	float:left;
 }
-
-/*.fc-session-slot.day-1{
-	width:100%;
-	max-width:100%;
-}
-
-.fc-session-slot.day-5{
-	width:20%;
-	max-width: 20%
-}
-
-.fc-session-slot.day-7{
-	width:14.28571428571429%;
-	max-width:14.28571428571429% ;
-}*/
 
 .fc-session-slot.highlight{
 	border-left: 1px solid orange;
@@ -607,7 +614,17 @@ table.fc-border-separate {
 	z-index: 2;
 	width: 100%;
 	overflow: hidden;
+	word-break:break-all;
+	
 	}
+
+.fc-event-content li {
+	line-height:normal;
+}
+
+.fc-event-content li > i {
+	color:green;
+}
 	
 .fc-event-vert .fc-event-time {
 	white-space: nowrap;

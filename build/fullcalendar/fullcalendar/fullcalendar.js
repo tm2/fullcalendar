@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Tue Feb 12 16:57:22 2013 +0000
+ * Date: Wed Feb 13 16:01:12 2013 +0000
  *
  */
  
@@ -4057,24 +4057,27 @@ function AgendaEventRenderer() {
 		}
 		html +=
 			" class='" + classes.join(' ') + "'" +
-			" style='position:absolute;z-index:8;top:" + seg.top + "px;left:" + seg.left + "px;" + skinCss + "'" +
-			">" +
+			" style='position:absolute;z-index:8;top:" + seg.top + "px;left:" + seg.left + "px;" + skinCss + "'>" +
 			"<div class='fc-event-inner fc-event-skin'" + skinCssAttr + ">" +
-			"<div class='fc-event-head fc-event-skin'" + skinCssAttr + ">" +
-			"<div class='fc-event-time'>" +
-			htmlEscape(formatDates(event.start, event.end, opt('timeFormat'))) +
-			"</div>" +
-			"</div>" +
-			"<div class='fc-event-content'>" +
-			"<div class='fc-event-title'>" +
-			htmlEscape(event.title) +
-			"</div>" +
-			"</div>" +
-			"<div class='fc-event-bg'></div>" +
+				"<div class='grid fc-event-content'>" +
+					"<div class='column' style='width:20px;'>" +
+						"<ul style='list-style-type:none; margin:0px;'>" +
+							"<li><i class='icon-circle'></i></li>" +
+							"<li><i class='icon-ok'></i></li>" +
+							"<li><i class='icon-warning-sign'></i></li>" +
+							"<li><i class='icon-exclamation-sign'></i></li>" +
+						"</ul>" +
+					"</div>" +
+					"<div class='column fc-event-title'>" +
+						"<span>" +
+							htmlEscape(event.title) +
+						"</span>" +
+					"</div>" +
+				"</div>" +
+				"<div class='fc-event-bg'></div>" +
 			"</div>"; // close inner
 		if (seg.isEnd && isEventResizable(event)) {
-			html +=
-				"<div class='ui-resizable-handle ui-resizable-s'>=</div>";
+			html += "<div class='ui-resizable-handle ui-resizable-s'>=</div>";
 		}
 		html +=
 			"</" + (url ? "a" : "div") + ">";
