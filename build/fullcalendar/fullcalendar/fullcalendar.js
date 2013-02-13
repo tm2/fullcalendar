@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Tue Feb 12 16:13:45 2013 +0000
+ * Date: Tue Feb 12 16:57:22 2013 +0000
  *
  */
  
@@ -2024,6 +2024,8 @@ function MonthView(element, calendar) {
 	
 	
 	// exports
+	t.renderSessions = renderSessions;
+	t.clearSessions = clearSessions;
 	t.render = render;
 	
 	
@@ -2065,8 +2067,12 @@ function MonthView(element, calendar) {
 		t.visEnd = visEnd;
 		renderBasic(6, rowCnt, nwe ? 5 : 7, true);
 	}
-	
-	
+
+	function clearSessions(){
+		$("tbody").find(".active").css("background", "transparent").removeClass("active");
+	}
+
+	function renderSessions(sessions) {}
 }
 
 fcViews.basicWeek = BasicWeekView;
@@ -2824,76 +2830,8 @@ function AgendaWeekView(element, calendar) {
 	}
 
 	function clearSessions(){
-		$("tbody").find(".active").css("background", "transparent").removeClass("active");
-	}
-
-	function renderSessions(sessions) {
-		/*var d1 = new Date().getTime();*/
-		var options = calendar.options;
-		var interval = options.slotMinutes
-		var slotNum = ((t.end - t.start)/(1000*60*interval));
-
-		if(!sessions) return;
-		
-		var _sessions = sessions.filter(function (el) {
-			return (el.start < t.end) && (el.end > t.start)
-		});
-		
-		for(var s=0; s < _sessions.length; s++)
-		{
-			var session = _sessions[s];
-			var selector = "";
-			var time = cloneDate(t.start)
-
-			for(var i=0; i<slotNum; i++)
-			{
-				if((time >= session.start) && (time < session.end))
-				{
-					selector += ".ts-" + time.getDay() + formatDate(time, "-HH-mm") + ", ";
-				}
-				addMinutes(time, interval);
-			}
-
-			$("tbody").find(selector).addClass("active").css("background", session.colour? session.colour : "white")
-		}
-		/*console.log(new Date().getTime() - d1)*/
-	}
-}
-fcViews.agendaDay = AgendaDayView;
-
-function AgendaDayView(element, calendar) {
-	var t = this;
-	
-	
-	// exports
-	t.render = render;
-	
-	
-	// imports
-	AgendaView.call(t, element, calendar, 'agendaDay');
-	var opt = t.opt;
-	var renderAgenda = t.renderAgenda;
-	var formatDate = calendar.formatDate;
-	
-	
-	
-	function render(date, delta) {
-		if (delta) {
-			addDays(date, delta);
-			if (!opt('weekends')) {
-				skipWeekend(date, delta < 0 ? -1 : 1);
-			}
-		}
-		var start = cloneDate(date, true);
-		var end = addDays(cloneDate(start), 1);
-		t.title = formatDate(date, opt('titleFormat'));
-		t.start = t.visStart = start;
-		t.end = t.visEnd = end;
-		renderAgenda(1);
-	}
-
-	function clearSessions(){
-		$("tbody").find(".active").css("background", "transparent").removeClass("active");
+		var nodes = $("tbody").find(".active").css("background", "transparent").removeClass("active");
+		nodes.find(".title").html("");
 	}
 
 	function renderSessions(sessions) {
@@ -2921,7 +2859,81 @@ function AgendaDayView(element, calendar) {
 				addMinutes(time, interval);
 			}
 
-			$("tbody").find(selector).addClass("active").css("background", session.colour? session.colour : "white")
+			var nodes = $("tbody").find(selector).addClass("active").css("background", session.colour? session.colour : "white")
+			if (session.title)
+				nodes.find(".title").html(" - " + session.title)
+		}
+	}
+}
+fcViews.agendaDay = AgendaDayView;
+
+function AgendaDayView(element, calendar) {
+	var t = this;
+	
+	
+	// exports
+	t.renderSessions = renderSessions;
+	t.clearSessions = clearSessions;
+	t.render = render;
+	
+	
+	// imports
+	AgendaView.call(t, element, calendar, 'agendaDay');
+	var opt = t.opt;
+	var renderAgenda = t.renderAgenda;
+	var formatDate = calendar.formatDate;
+	
+	
+	
+	function render(date, delta) {
+		if (delta) {
+			addDays(date, delta);
+			if (!opt('weekends')) {
+				skipWeekend(date, delta < 0 ? -1 : 1);
+			}
+		}
+		var start = cloneDate(date, true);
+		var end = addDays(cloneDate(start), 1);
+		t.title = formatDate(date, opt('titleFormat'));
+		t.start = t.visStart = start;
+		t.end = t.visEnd = end;
+		renderAgenda(1);
+	}
+
+	function clearSessions(){
+		var nodes = $("tbody").find(".active").css("background", "transparent").removeClass("active");
+		nodes.find(".title").html("");
+	}
+
+	function renderSessions(sessions) {
+		var interval = calendar.options.slotMinutes
+		var slotNum = ((t.end - t.start)/(1000*60*interval));
+
+		if(!sessions) return;
+		
+		var _sessions = sessions.filter(function (el) {
+			return (el.start < t.end) && (el.end > t.start)
+		});
+		
+		for(var s=0; s < _sessions.length; s++)
+		{
+			var session = _sessions[s];
+			var selector = "";
+			var time = cloneDate(t.start)
+
+			for(var i=0; i<slotNum; i++)
+			{
+				if((time >= session.start) && (time < session.end))
+				{
+					selector += ".ts-0" + formatDate(time, "-HH-mm") + ", ";
+				}
+				addMinutes(time, interval);
+				
+			}
+
+			var nodes = $("tbody").find(selector).addClass("active").css("background", session.colour? session.colour : "white")
+			if (session.title)
+				nodes.find(".title").html(" - " + session.title)
 		}
 	}
 	
@@ -3222,7 +3234,8 @@ function AgendaView(element, calendar, viewName) {
 
 			for (c=0; c < colCnt; c++) {
 				s += "<div class='fc-session-slot fc-col" + c + " ts-" + c + "-" + formatDate(d, "HH-mm") + "'>" +
-					 "<div>" + formatDate(d, "HH:mm") + "</div>" +
+					 "<span>" + formatDate(d, "HH:mm") + "</span>" +
+					 "<span class='title'></span>" + 
 					 "</div>"
 			}
 			s +=
