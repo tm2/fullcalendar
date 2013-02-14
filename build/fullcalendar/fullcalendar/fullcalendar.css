@@ -5,7 +5,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Thu Feb 14 11:21:13 2013 +0000
+ * Date: Thu Feb 14 11:47:27 2013 +0000
  *
  */
 
@@ -279,7 +279,6 @@ td.fc-widget-content {
 .fc-event {
 	border-style: solid;
 	border-width: 0;
-	font-size: .85em;
 	cursor: default;
 	}
 	
@@ -307,7 +306,7 @@ a.fc-event {
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FF8888), color-stop(0.6, #FF0000));
 	background-image: -webkit-linear-gradient(top, #FF8888 0%, #FF0000 60%);
 	background-image: linear-gradient(to bottom, #FF8888 0%, #FF0000 60%);*/
-	
+
 	background-image: -ms-linear-gradient(top, #FFFFFF 0%, #B3DBE8 100%);
 	background-image: -moz-linear-gradient(top, #FFFFFF 0%, #B3DBE8 100%);
 	background-image: -o-linear-gradient(top, #FFFFFF 0%, #B3DBE8 100%);
@@ -636,6 +635,7 @@ table.fc-border-separate {
     display: initial; /* reset Font Awesome's display:inline-block */
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #888;
+    font-size: 20px;
 }
 	
 .fc-event-vert .fc-event-time {
