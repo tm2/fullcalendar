@@ -4,7 +4,7 @@
 
 .fc-session-slot{
 	position:relative; 
-	font-size:8px; 
+	font-size:10px; 
 	color:gray; 
 	float:left;
 }
@@ -79,7 +79,7 @@
 	}
 	
 .fc-agenda-slots td div {
-	height: 20px;
+	height: 24px;
 	}
 	
 .fc-agenda-slots tr.fc-slot0 th,
@@ -119,8 +119,13 @@
 	line-height:normal;
 }
 
-.fc-event-content li > i {
-	color:green;
+.fc-event-content li > i:before {
+	background: -webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#00ff00),color-stop(100%,#66ff66));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: initial; /* reset Font Awesome's display:inline-block */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #888;
 }
 	
 .fc-event-vert .fc-event-time {

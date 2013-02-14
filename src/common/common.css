@@ -181,12 +181,19 @@ a.fc-event {
 	/*background-color: #36c;  default BACKGROUND color */
 	color: black;            /* default TEXT color */
 
-	background-image: -ms-linear-gradient(top, #FF8888 0%, #FF0000 60%);
+	/*background-image: -ms-linear-gradient(top, #FF8888 0%, #FF0000 60%);
 	background-image: -moz-linear-gradient(top, #FF8888 0%, #FF0000 60%);
 	background-image: -o-linear-gradient(top, #FF8888 0%, #FF0000 60%);
 	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FF8888), color-stop(0.6, #FF0000));
 	background-image: -webkit-linear-gradient(top, #FF8888 0%, #FF0000 60%);
-	background-image: linear-gradient(to bottom, #FF8888 0%, #FF0000 60%);
+	background-image: linear-gradient(to bottom, #FF8888 0%, #FF0000 60%);*/
+	
+	background-image: -ms-linear-gradient(top, #FFFFFF 0%, #B3DBE8 100%);
+	background-image: -moz-linear-gradient(top, #FFFFFF 0%, #B3DBE8 100%);
+	background-image: -o-linear-gradient(top, #FFFFFF 0%, #B3DBE8 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, #B3DBE8));
+	background-image: -webkit-linear-gradient(top, #FFFFFF 0%, #B3DBE8 100%);
+	background-image: linear-gradient(to bottom, #FFFFFF 0%, #B3DBE8 100%);
 }
 
 
@@ -203,8 +210,8 @@ a.fc-event {
 .fc-event-time,
 .fc-event-title {
 	padding: 0 1px;
-	font-size: 8px;
-	line-height: 10px;
+	font-size: 12px;
+	line-height: 14px;
 	}
 	
 .fc .ui-resizable-handle { /*** TODO: don't use ui-resizable anymore, change class ***/
