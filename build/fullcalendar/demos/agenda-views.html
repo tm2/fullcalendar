@@ -40,21 +40,77 @@
 			editable: true,
 			events: [
 				{
-					title: 'Meetingdfdvdvsdfvsdfvsdvsdvsdfvsfvsdfvsfdvsfdvsdfvsdfv',
+					title: 'Booked Appointment',
+					status: 0,
+					type: 'A',
+					inDebt: false,
+					hasAlerts: false,
+					smsReminder: true,
+					onlineBooking:true,
+					start: new Date(y, m, d, 6, 00),
+					end: new Date(y, m, d, 7, 00),
+					allDay: false
+				},
+				{
+					title: 'Arrived Appointment',
+					status: 1,
+					type: 'A',
+					inDebt: true,
+					hasAlerts: false,
+					start: new Date(y, m, d, 7, 00),
+					end: new Date(y, m, d, 8, 00),
+					allDay: false
+				},
+				{
+					title: 'Completed Appointment',
+					status: 2,
+					type: 'A',
+					inDebt: false,
+					hasAlerts: true,
+					start: new Date(y, m, d, 8, 00),
+					end: new Date(y, m, d, 9, 00),
+					allDay: false
+				},
+				{
+					title: 'DNA Appointment',
+					status: 3,
+					type: 'A',
+					inDebt: true,
+					hasAlerts: true,
+					start: new Date(y, m, d, 9, 00),
+					end: new Date(y, m, d, 10, 00),
+					allDay: false
+				},
+				{
+					title: 'Cancelled Appointment',
+					status: 4,
+					type: 'A',
+					inDebt: false,
+					hasAlerts: true,
+					start: new Date(y, m, d, 10, 00),
+					end: new Date(y, m, d, 11, 00),
+					allDay: false
+				},
+				{
+					title: 'Meeting',
+					status: 0,
+					type: 'M',
 					start: new Date(y, m, d, 13, 30),
 					end: new Date(y, m, d, 15, 30),
 					allDay: false
 				},
 				{
-					title: 'Lunchjehsfvljkhsdlkjhsdlkjvhslkdjfvhlksdjfvhlskdjfvhlksjdfhvkljsdfhvlkjsdvlkjsfd',
+					title: 'Lunch',
+					type: 'O',
 					start: new Date(y, m, d, 12, 0),
 					end: new Date(y, m, d, 14, 0),
 					allDay: false
 				},
 				{
 					title: 'Birthday Party',
-					start: new Date(y, m, d+1, 19, 0),
-					end: new Date(y, m, d+1, 22, 30),
+					type: 'H',
+					start: new Date(y, m, d, 19, 0),
+					end: new Date(y, m, d, 22, 30),
 					allDay: false
 				}
 			],

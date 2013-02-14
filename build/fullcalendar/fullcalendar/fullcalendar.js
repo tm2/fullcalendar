@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Thu Feb 14 11:47:27 2013 +0000
+ * Date: Thu Feb 14 16:51:31 2013 +0000
  *
  */
  
@@ -4055,17 +4055,64 @@ function AgendaEventRenderer() {
 		}else{
 			html += "div";
 		}
+
+		var icons = ""
+
+		switch(event.type)
+		{
+			case 'A':
+				switch(event.status)
+				{
+					case 0: //Booked
+						icons += "<li><i class='icon-circle booked'></i></li>";
+						break;
+					case 1: //Arrived
+						icons += "<li><i class='icon-circle arrived'></i></li>";
+						break;
+					case 2: //Completed
+						icons += "<li><i class='icon-ok completed'></i></li>";
+						break;
+					case 3: //DNA
+						icons += "<li><i class='icon-circle did-not-attend'></i></li>";
+						break;
+					case 4: //Cancelled
+						icons += "<li><i class='icon-remove cancelled'></i></li>";
+						break;
+					case 5: //Provisional
+						break;
+				}
+				if(event.onlineBooking == true)
+					icons += "<li><i class='icon-cloud-download online-booking'></i></li>";
+
+				if(event.inDebt == true)
+					icons += "<li><i class='icon-money has-debt'></i></li>";
+
+				if(event.hasAlerts == true)
+					icons += "<li><i class='icon-warning-sign has-alert'></i></li>";
+
+				if(event.smsReminder == true)
+					icons += "<li><i class='icon-envelope-alt sms-reminder'></i></li>";
+
+				break;
+			case 'H':
+				icons += "<li><i class='icon-time holiday'></i></li>";
+				break;
+			case 'M':
+				icons += "<li><i class='icon-calendar meeting'></i></li>";
+				break;
+			case 'O':
+				icons += "<li><i class='icon-list-alt other'></i></li>";
+				break;
+		}
+			
 		html +=
 			" class='" + classes.join(' ') + "'" +
 			" style='position:absolute;z-index:8;top:" + seg.top + "px;left:" + seg.left + "px;" + skinCss + "'>" +
 			"<div class='fc-event-inner fc-event-skin'" + skinCssAttr + ">" +
 				"<div class='grid fc-event-content'>" +
 					"<div class='column' style='width:25px;'>" +
-						"<ul style='list-style-type:none; margin:0px;'>" +
-							"<li><i class='icon-circle'></i></li>" +
-							"<li><i class='icon-ok'></i></li>" +
-							"<li><i class='icon-warning-sign'></i></li>" +
-							"<li><i class='icon-exclamation-sign'></i></li>" +
+						"<ul style='list-style-type:none; margin:5px;'>" +
+							icons +
 						"</ul>" +
 					"</div>" +
 					"<div class='column fc-event-title'>" +
