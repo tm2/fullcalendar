@@ -117,16 +117,87 @@
 
 .fc-event-content li {
 	line-height:normal;
+	text-align: center;
 }
 
 .fc-event-content li > i:before {
-	background: -webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#00ff00),color-stop(100%,#66ff66));
-    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: initial; /* reset Font Awesome's display:inline-block */
-    -webkit-text-stroke-width: 1px;
+    display: initial; 
+    font-size: 16px;
+}
+
+.fc-event-content li > i.booked:before {
+	background: -webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#00ff00),color-stop(100%,#66ff66));
+	-webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #888;
-    font-size: 20px;
+	-webkit-background-clip: text;
+}
+
+.fc-event-content li > i.arrived:before {
+	background: -webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#ffa500),color-stop(100%,#ff8c00));
+	-webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #888;
+	-webkit-background-clip: text;
+}
+
+.fc-event-content li > i.completed:before {
+	background: -webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#0000ff),color-stop(100%,#6666ff));
+	-webkit-background-clip: text;
+}
+
+.fc-event-content li > i.did-not-attend:before {
+	background: -webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#888888),color-stop(100%,#000000));
+	-webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #888;
+	-webkit-background-clip: text;
+}
+
+.fc-event-content li > i.cancelled:before {
+	background: red;
+	-webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #000;
+	-webkit-background-clip: text;
+}
+
+.fc-event-content li > i.has-alert:before {
+	background: red;
+	-webkit-background-clip: text;
+}
+
+.fc-event-content li > i.has-debt:before {
+	background: blue;
+	-webkit-background-clip: text;
+}
+
+.fc-event-content li > i.online-booking:before {
+	background: blue;
+	-webkit-background-clip: text;
+}
+
+.fc-event-content li > i.sms-reminder:before {
+	background: blue;
+	-webkit-background-clip: text;
+}
+
+.fc-event-content li > i.holiday:before {
+	background: #888;
+	-webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #000;
+	-webkit-background-clip: text;
+}
+
+.fc-event-content li > i.meeting:before {
+	background: blue;
+	-webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #888;
+	-webkit-background-clip: text;
+}
+
+.fc-event-content li > i.other:before {
+	background: blue;
+	-webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #888;
+	-webkit-background-clip: text;
 }
 	
 .fc-event-vert .fc-event-time {

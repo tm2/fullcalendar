@@ -635,7 +635,7 @@ table.fc-border-separate {
     display: initial; /* reset Font Awesome's display:inline-block */
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #888;
-    font-size: 20px;
+    font-size: 12px;
 }
 	
 .fc-event-vert .fc-event-time {
