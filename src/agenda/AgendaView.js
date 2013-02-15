@@ -537,7 +537,7 @@ function AgendaView(element, calendar, viewName) {
 			p = [n];
 			cols[i] = p;
 		});
-		p[1] = n + e.outerWidth();
+		p[1] = n + e.outerWidth()
 		if (opt('allDaySlot')) {
 			e = allDayRow;
 			n = e.offset().top;

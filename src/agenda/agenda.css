@@ -89,7 +89,8 @@
 
 .fc-agenda-slots tr.fc-minor th,
 .fc-agenda-slots tr.fc-minor td {
-	border-top-style: none;
+	/*border-top-style: none;*/
+	border-top:1px solid #ccc;
 	}
 	
 .fc-agenda-slots tr.fc-minor th.ui-widget-header {
