@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Thu Feb 14 16:51:31 2013 +0000
+ * Date: Fri Feb 15 12:03:56 2013 +0000
  *
  */
  
@@ -3478,7 +3478,7 @@ function AgendaView(element, calendar, viewName) {
 			p = [n];
 			cols[i] = p;
 		});
-		p[1] = n + e.outerWidth();
+		p[1] = n + e.outerWidth()
 		if (opt('allDaySlot')) {
 			e = allDayRow;
 			n = e.offset().top;
