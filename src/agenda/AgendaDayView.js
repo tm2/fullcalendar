@@ -52,20 +52,20 @@ function AgendaDayView(element, calendar) {
 		for(var s=0; s < _sessions.length; s++)
 		{
 			var session = _sessions[s];
-			var selector = "";
+			var selector = [];
 			var time = cloneDate(t.start)
 
 			for(var i=0; i<slotNum; i++)
 			{
 				if((time >= session.start) && (time < session.end))
 				{
-					selector += ".ts-0" + formatDate(time, "-HH-mm") + ", ";
+					selector.push(".ts-0" + formatDate(time, "-HH-mm"));
 				}
 				addMinutes(time, interval);
 				
 			}
 
-			var nodes = $("tbody").find(selector).addClass("active").css("background", session.colour? session.colour : "white")
+			var nodes = $("tbody").find(selector.join()).addClass("active").css("background", session.colour? session.colour : "white")
 			if (session.title)
 				nodes.find(".title").html(" - " + session.title)
 		}
