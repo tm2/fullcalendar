@@ -351,7 +351,7 @@ function AgendaEventRenderer() {
 		html +=
 			" class='" + classes.join(' ') + "'" +
 			" style='position:absolute;z-index:8;top:" + seg.top + "px;left:" + seg.left + "px;" + skinCss + "'>" +
-			"<div class='fc-event-inner fc-event-skin'" + skinCssAttr + ">" +
+			"<div class='fc-event-inner fc-event-skin'>" +
 				"<div class='grid fc-event-content'>" +
 					"<div class='column' style='width:25px;'>" +
 						"<ul style='list-style-type:none; margin:5px;'>" +
