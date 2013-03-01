@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Fri Feb 15 14:10:37 2013 +0000
+ * Date: Fri Mar 1 11:07:00 2013 +0000
  *
  */
  
@@ -1980,9 +1980,17 @@ function getSkinCss(event, opt) {
 		source.textColor ||
 		opt('eventTextColor');
 	var statements = [];
-	if (backgroundColor) {
-		statements.push('background-color:' + backgroundColor);
+	if (!backgroundColor) {
+		backgroundColor = '#B3DBE8';
 	}
+		
+	statements.push('background-image: -ms-linear-gradient(top, #FFFFFF 0%, ' + backgroundColor + ' 100%)') 
+    statements.push('background-image: -moz-linear-gradient(top, #FFFFFF 0%, ' + backgroundColor + ' 100%)')
+    statements.push('background-image: -o-linear-gradient(top, #FFFFFF 0%, ' + backgroundColor + ' 100%)')
+    statements.push('background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, ' + backgroundColor + '))')
+    statements.push('background-image: -webkit-linear-gradient(top, #FFFFFF 0%, ' + backgroundColor + ' 100%)')
+    statements.push('background-image: linear-gradient(to bottom, #FFFFFF 0%, ' + backgroundColor + ' 100%)')
+
 	if (borderColor) {
 		statements.push('border-color:' + borderColor);
 	}
