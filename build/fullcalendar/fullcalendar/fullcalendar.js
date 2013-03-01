@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Fri Mar 1 11:33:13 2013 +0000
+ * Date: Fri Mar 1 11:45:09 2013 +0000
  *
  */
  
@@ -1980,7 +1980,16 @@ function getSkinCss(event, opt) {
 		source.textColor ||
 		opt('eventTextColor');
 	var statements = [];
-	if (!backgroundColor) {
+
+	if (backgroundColor) {
+		statements.push('background-image: -ms-linear-gradient(top, #FFFFFF 0%, ' + backgroundColor + ' 100%)') 
+	    statements.push('background-image: -moz-linear-gradient(top, #FFFFFF 0%, ' + backgroundColor + ' 100%)')
+	    statements.push('background-image: -o-linear-gradient(top, #FFFFFF 0%, ' + backgroundColor + ' 100%)')
+	    statements.push('background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, ' + backgroundColor + '))')
+	    statements.push('background-image: -webkit-linear-gradient(top, #FFFFFF 0%, ' + backgroundColor + ' 100%)')
+	    statements.push('background-image: linear-gradient(to bottom, #FFFFFF 0%, ' + backgroundColor + ' 100%)')
+	}
+	/*if (!backgroundColor) {
 		backgroundColor = '#B3DBE8';
 	}
 		
@@ -1989,7 +1998,7 @@ function getSkinCss(event, opt) {
     statements.push('background-image: -o-linear-gradient(top, #FFFFFF 0%, ' + backgroundColor + ' 100%)')
     statements.push('background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FFFFFF), color-stop(1, ' + backgroundColor + '))')
     statements.push('background-image: -webkit-linear-gradient(top, #FFFFFF 0%, ' + backgroundColor + ' 100%)')
-    statements.push('background-image: linear-gradient(to bottom, #FFFFFF 0%, ' + backgroundColor + ' 100%)')
+    statements.push('background-image: linear-gradient(to bottom, #FFFFFF 0%, ' + backgroundColor + ' 100%)')*/
 
 	if (borderColor) {
 		statements.push('border-color:' + borderColor);
@@ -4116,7 +4125,7 @@ function AgendaEventRenderer() {
 		html +=
 			" class='" + classes.join(' ') + "'" +
 			" style='position:absolute;z-index:8;top:" + seg.top + "px;left:" + seg.left + "px;" + skinCss + "'>" +
-			"<div class='fc-event-inner fc-event-skin'>" +
+			"<div class='fc-event-inner'>" +
 				"<div class='grid fc-event-content'>" +
 					"<div class='column' style='width:25px;'>" +
 						"<ul style='list-style-type:none; margin:5px;'>" +
