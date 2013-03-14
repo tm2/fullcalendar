@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Fri Mar 1 11:47:42 2013 +0000
+ * Date: Thu Mar 14 10:15:10 2013 +0000
  *
  */
  
@@ -3249,11 +3249,11 @@ function AgendaView(element, calendar, viewName) {
 				"</th>" +
 				"<td class='" + contentClass + "'>"
 
+			var ghost = (opt('showGhosted') == true) ? "<span class='title'></span>" : "";
+
 			for (c=0; c < colCnt; c++) {
 				s += "<div class='fc-session-slot fc-col" + c + " ts-" + c + "-" + formatDate(d, "HH-mm") + "'>" +
-					 "<span>" + formatDate(d, "HH:mm") + "</span>" +
-					 "<span class='title'></span>" + 
-					 "</div>"
+					 "<span>" + formatDate(d, "HH:mm") + "</span>" + ghost + "</div>"
 			}
 			s +=
 				"</td>" +
