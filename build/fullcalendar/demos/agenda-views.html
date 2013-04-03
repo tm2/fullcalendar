@@ -34,7 +34,7 @@
             dayClick: function(date, allDay, jsEvent, view) {
             	console.log("clicked")
 		    },
-
+		    
             allDaySlot: false,
             slotMinutes:15,
 			editable: true,
@@ -119,10 +119,12 @@
 			sessions: function() {
 				return [
 					{
+						title: "Location 1",
 						start: new Date(y, m, d, 6, 0),
 						end: new Date(y, m, d, 14, 0),
 					},
 					{
+						title: "Location 2",
 						start: new Date(y, m, d+1, 9, 0),
 						end: new Date(y, m, d+1, 17, 0),
 					}
