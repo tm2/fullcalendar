@@ -72,7 +72,7 @@ function fixDate(d, check) { // force d to be on check's YMD, for daylight savin
 
 
 function addMinutes(d, n) {
-	d.setMinutes(d.getMinutes() + n);
+	d.setUTCMinutes(d.getUTCMinutes() + n);
 	return d;
 }
 
