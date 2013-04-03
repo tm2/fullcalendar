@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Wed Apr 3 11:13:26 2013 +0100
+ * Date: Wed Apr 3 11:37:43 2013 +0100
  *
  */
  
@@ -1364,7 +1364,7 @@ function fixDate(d, check) { // force d to be on check's YMD, for daylight savin
 
 
 function addMinutes(d, n) {
-	d.setMinutes(d.getMinutes() + n);
+	d.setUTCMinutes(d.getUTCMinutes() + n);
 	return d;
 }
 
