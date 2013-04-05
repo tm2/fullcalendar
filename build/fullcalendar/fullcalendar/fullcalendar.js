@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Fri Apr 5 10:32:59 2013 +0100
+ * Date: Fri Apr 5 12:07:42 2013 +0100
  *
  */
  
@@ -2876,7 +2876,11 @@ function AgendaWeekView(element, calendar) {
 				addMinutes(time, interval);
 			}
 
-			var nodes = $("tbody").find(selector.join()).attr("data-location", session.location).addClass("active").css("background", session.colour? session.colour : "white")
+			var nodes = $("tbody").find(selector.join())
+								  .attr("data-location", session.location)
+								  .attr("data-column", "waffles")
+								  .addClass("active")
+								  .css("background", session.colour? session.colour : "white")
 			if (session.title)
 				nodes.find(".title").html(" - " + session.title)
 		}
@@ -3240,27 +3244,27 @@ function AgendaView(element, calendar, viewName) {
 		addMinutes(d, minMinute);
 		slotCnt = 0;
 
-		// for (i=0; d < maxd; i++) {
-		// 	minutes = d.getMinutes();
-		// 	s +=
-		// 		"<tr class='fc-slot" + i + ' ' + (!minutes ? '' : 'fc-minor') + "'>" +
-		// 		"<th class='fc-agenda-axis " + headerClass + "'>" +
-		// 		((!slotNormal || !minutes) ? formatDate(d, opt('axisFormat')) : '&nbsp;') +
-		// 		"</th>" +
-		// 		"<td class='" + contentClass + "'>"
+		for (i=0; d < maxd; i++) {
+			minutes = d.getMinutes();
+			s +=
+				"<tr class='fc-slot" + i + ' ' + (!minutes ? '' : 'fc-minor') + "'>" +
+				"<th class='fc-agenda-axis " + headerClass + "'>" +
+				((!slotNormal || !minutes) ? formatDate(d, opt('axisFormat')) : '&nbsp;') +
+				"</th>" +
+				"<td class='" + contentClass + "'>"
 
-		// 	var ghost = (opt('showGhosted') == true) ? "<span class='title'></span>" : "";
+			var ghost = (opt('showGhosted') == true) ? "<span class='title'></span>" : "";
 
-		// 	for (c=0; c < colCnt; c++) {
-		// 		s += "<div class='fc-session-slot fc-col" + c + " ts-" + d.getDay() + "-" + formatDate(d, "HH-mm") + "'>" +
-		// 			 "<span>" + formatDate(d, "HH:mm") + "</span>" + ghost + "</div>"
-		// 	}
-		// 	s +=
-		// 		"</td>" +
-		// 		"</tr>";
-		// 	addMinutes(d, opt('slotMinutes'));
-		// 	slotCnt++;
-		// }
+			for (c=0; c < colCnt; c++) {
+				s += "<div class='fc-session-slot fc-col" + c + " ts-" + c + "-" + formatDate(d, "HH-mm") + "'>" +
+					 "<span>" + formatDate(d, "HH:mm") + "</span>" + ghost + "</div>"
+			}
+			s +=
+				"</td>" +
+				"</tr>";
+			addMinutes(d, opt('slotMinutes'));
+			slotCnt++;
+		}
 		s +=
 			"</tbody>" +
 			"</table>";
