@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Wed Apr 3 11:37:43 2013 +0100
+ * Date: Fri Apr 5 09:47:06 2013 +0100
  *
  */
  
@@ -2876,7 +2876,7 @@ function AgendaWeekView(element, calendar) {
 				addMinutes(time, interval);
 			}
 
-			var nodes = $("tbody").find(selector.join()).addClass("active").css("background", session.colour? session.colour : "white")
+			var nodes = $("tbody").find(selector.join()).attr("data-location", session.location).addClass("active").css("background", session.colour? session.colour : "white")
 			if (session.title)
 				nodes.find(".title").html(" - " + session.title)
 		}
