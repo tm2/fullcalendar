@@ -593,7 +593,7 @@ function AgendaView(element, calendar, viewName) {
 			slotIndex--;
 		}
 		if (slotIndex >= 0) {
-			addMinutes(d, minMinute + slotIndex * opt('slotMinutes'));
+			addMinutes(d, (minMinute + slotIndex * opt('slotMinutes')) + d.getTimezoneOffset());
 		}
 		return d;
 	}
@@ -746,6 +746,7 @@ function AgendaView(element, calendar, viewName) {
 	
 	
 	function slotSelectionMousedown(ev) {
+		// debugger
 		if (ev.which == 1 && opt('selectable')) { // ev.which==1 means left mouse button
 			unselect(ev);
 			var dates;

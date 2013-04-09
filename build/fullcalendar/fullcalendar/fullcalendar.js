@@ -3556,6 +3556,7 @@ function AgendaView(element, calendar, viewName) {
 	
 	function cellDate(cell) {
 		var d = colDate(cell.col);
+		console.log(d)
 		var slotIndex = cell.row;
 		if (opt('allDaySlot')) {
 			slotIndex--;
