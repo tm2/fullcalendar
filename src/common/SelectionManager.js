@@ -40,7 +40,6 @@ function SelectionManager() {
 	
 
 	function select(startDate, endDate, allDay) {
-		console.log(startDate)
 		unselect();
 		if (!endDate) {
 			endDate = defaultSelectionEnd(startDate, allDay);
