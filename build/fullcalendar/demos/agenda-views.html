@@ -38,6 +38,8 @@
             allDaySlot: false,
             slotMinutes:15,
 			editable: true,
+			weekends: false,
+			firstDay: 5,
 			events: [
 				{
 					title: 'Booked Appointment',
@@ -120,13 +122,18 @@
 				return [
 					{
 						title: "Location 1",
+						start: new Date(y, m, d-7, 7, 0),
+						end: new Date(y, m, d-7, 12, 0),
+					},
+					{
+						title: "Location 1",
 						start: new Date(y, m, d, 6, 0),
 						end: new Date(y, m, d, 14, 0),
 					},
 					{
 						title: "Location 2",
-						start: new Date(y, m, d+1, 9, 0),
-						end: new Date(y, m, d+1, 17, 0),
+						start: new Date(y, m, d+3, 9, 0),
+						end: new Date(y, m, d+3, 17, 0),
 					}
 				]
 			}

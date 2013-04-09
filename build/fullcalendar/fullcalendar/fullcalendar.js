@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Fri Apr 5 12:07:42 2013 +0100
+ * Date: Tue Apr 9 09:18:17 2013 +0100
  *
  */
  
@@ -2866,12 +2866,18 @@ function AgendaWeekView(element, calendar) {
 			var session = _sessions[s];
 			var selector = [];
 			var time = cloneDate(t.start)
+			var ts = ((session.start.getDay() - opt('firstDay')) + 7) % 7;
+
+			if(opt('weekends') == false && opt('firstDay') == 0)
+			{
+				ts -= 1
+			}
 
 			for(var i=0; i<slotNum; i++)
 			{
 				if((time >= session.start) && (time < session.end))
 				{
-					selector.push(".ts-" + time.getDay() + formatDate(time, "-HH-mm"));
+					selector.push(".ts-" + ts + formatDate(time, "-HH-mm"));
 				}
 				addMinutes(time, interval);
 			}
