@@ -64,12 +64,18 @@ function AgendaWeekView(element, calendar) {
 			var session = _sessions[s];
 			var selector = [];
 			var time = cloneDate(t.start)
+			var ts = ((session.start.getDay() - opt('firstDay')) + 7) % 7;
+
+			if(opt('weekends') == false && opt('firstDay') == 0)
+			{
+				ts -= 1
+			}
 
 			for(var i=0; i<slotNum; i++)
 			{
 				if((time >= session.start) && (time < session.end))
 				{
-					selector.push(".ts-" + time.getDay() + formatDate(time, "-HH-mm"));
+					selector.push(".ts-" + ts + formatDate(time, "-HH-mm"));
 				}
 				addMinutes(time, interval);
 			}
