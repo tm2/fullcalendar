@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Tue Apr 9 09:18:17 2013 +0100
+ * Date: Tue Apr 9 16:52:06 2013 +0100
  *
  */
  
@@ -2884,8 +2884,7 @@ function AgendaWeekView(element, calendar) {
 
 			var nodes = $("tbody").find(selector.join())
 								  .attr("data-location", session.location)
-								  .attr("data-column", "waffles")
-								  .addClass("active")
+								  /*.addClass("active")*/
 								  .css("background", session.colour? session.colour : "white")
 			if (session.title)
 				nodes.find(".title").html(" - " + session.title)
@@ -3561,7 +3560,7 @@ function AgendaView(element, calendar, viewName) {
 			slotIndex--;
 		}
 		if (slotIndex >= 0) {
-			addMinutes(d, minMinute + slotIndex * opt('slotMinutes'));
+			addMinutes(d, (minMinute + slotIndex * opt('slotMinutes')) + d.getTimezoneOffset());
 		}
 		return d;
 	}
@@ -3714,6 +3713,7 @@ function AgendaView(element, calendar, viewName) {
 	
 	
 	function slotSelectionMousedown(ev) {
+		// debugger
 		if (ev.which == 1 && opt('selectable')) { // ev.which==1 means left mouse button
 			unselect(ev);
 			var dates;
