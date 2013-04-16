@@ -82,7 +82,7 @@ function AgendaWeekView(element, calendar) {
 
 			var nodes = $("tbody").find(selector.join())
 								  .attr("data-location", session.location)
-								  /*.addClass("active")*/
+								  .addClass("active")
 								  .css("background", session.colour? session.colour : "white")
 			if (session.title)
 				nodes.find(".title").html(" - " + session.title)
