@@ -5,6 +5,7 @@ var fcViews = fc.views = {};
 
 $.fn.fullCalendar = function(options) {
 
+	options = options || {}
 
 	// method calling
 	if (typeof options == 'string') {
