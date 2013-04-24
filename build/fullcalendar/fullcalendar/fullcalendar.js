@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Tue Apr 16 16:19:11 2013 +0100
+ * Date: Thu Apr 18 09:45:33 2013 +0100
  *
  */
  
@@ -117,6 +117,7 @@ var fcViews = fc.views = {};
 
 $.fn.fullCalendar = function(options) {
 
+	options = options || {}
 
 	// method calling
 	if (typeof options == 'string') {
