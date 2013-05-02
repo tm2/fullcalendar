@@ -53,7 +53,7 @@ function Calendar(element, options, eventSources) {
 	var absoluteViewElement;
 	var resizeUID = 0;
 	var ignoreWindowResize = 0;
-	var date = new Date();
+	var date = options.initialDate || new Date();
 	var events = [];
 	var sessions = [];
 	var _dragElement;
