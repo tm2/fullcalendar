@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Thu Apr 18 09:45:33 2013 +0100
+ * Date: Thu May 2 15:25:00 2013 +0100
  *
  */
  
@@ -231,7 +231,7 @@ function Calendar(element, options, eventSources) {
 	var absoluteViewElement;
 	var resizeUID = 0;
 	var ignoreWindowResize = 0;
-	var date = new Date();
+	var date = options.initialDate || new Date();
 	var events = [];
 	var sessions = [];
 	var _dragElement;
