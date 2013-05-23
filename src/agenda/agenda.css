@@ -128,74 +128,97 @@
 }
 
 .fc-event-content li > i.booked:before {
-	background: -webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#00ff00),color-stop(100%,#66ff66));
+	/*background: -webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#00ff00),color-stop(100%,#66ff66));*/
+	color: #00ff00;
+	background: -webkit-linear-gradient(transparent, transparent), 
+				-webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#00ff00),color-stop(100%,#66ff66));
 	-webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #888;
 	-webkit-background-clip: text;
 }
 
 .fc-event-content li > i.arrived:before {
-	background: -webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#ffa500),color-stop(100%,#ff8c00));
+	/*background: -webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#ffa500),color-stop(100%,#ff8c00));*/
+	color: #ffa500;
+	background: -webkit-linear-gradient(transparent, transparent), 
+				-webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#ffa500),color-stop(100%,#ff8c00));
 	-webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #888;
 	-webkit-background-clip: text;
 }
 
 .fc-event-content li > i.completed:before {
-	background: -webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#0000ff),color-stop(100%,#6666ff));
+	/*background: -webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#0000ff),color-stop(100%,#6666ff));*/
+	color: #0000ff;
+	background: -webkit-linear-gradient(transparent, transparent), 
+				-webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#0000ff),color-stop(100%,#6666ff));
 	-webkit-background-clip: text;
 }
 
 .fc-event-content li > i.did-not-attend:before {
-	background: -webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#888888),color-stop(100%,#000000));
+	/*background: -webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#888888),color-stop(100%,#000000));*/
+	color: #888888;
+	background: -webkit-linear-gradient(transparent, transparent), 
+				-webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#888888),color-stop(100%,#000000));
 	-webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #888;
 	-webkit-background-clip: text;
 }
 
 .fc-event-content li > i.cancelled:before {
-	background: red;
+	color: red;
+	background: -webkit-linear-gradient(transparent, transparent), red;
 	-webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #000;
 	-webkit-background-clip: text;
 }
 
 .fc-event-content li > i.has-alert:before {
-	background: red;
-	-webkit-background-clip: text;
+ 	color: red;
+	background: -webkit-linear-gradient(transparent, transparent), red;
+ 	-webkit-background-clip: text;
 }
 
 .fc-event-content li > i.has-debt:before {
-	background: blue;
+	color: blue;
+	background: -webkit-linear-gradient(transparent, transparent), blue;
 	-webkit-background-clip: text;
 }
 
 .fc-event-content li > i.online-booking:before {
-	background: blue;
+	color: blue;
+	background: -webkit-linear-gradient(transparent, transparent), blue;
 	-webkit-background-clip: text;
 }
 
 .fc-event-content li > i.sms-reminder:before {
-	background: blue;
+	color: blue;
+	background: -webkit-linear-gradient(transparent, transparent), blue;
 	-webkit-background-clip: text;
 }
 
 .fc-event-content li > i.holiday:before {
-	background: #888;
+	/*background: #888;*/
+	color: #888;
+	background: -webkit-linear-gradient(transparent, transparent), #888;
 	-webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #000;
 	-webkit-background-clip: text;
 }
 
 .fc-event-content li > i.meeting:before {
-	background: blue;
+	/*background: blue;*/
+	color: blue;
+	background: -webkit-linear-gradient(transparent, transparent), blue;
 	-webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #888;
 	-webkit-background-clip: text;
 }
 
 .fc-event-content li > i.other:before {
-	background: blue;
+	/*background: blue;*/
+	color: blue;
+	background: -webkit-linear-gradient(transparent, transparent), blue;
 	-webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #888;
 	-webkit-background-clip: text;
