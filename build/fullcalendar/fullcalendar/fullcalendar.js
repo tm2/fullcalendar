@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Thu May 23 11:49:36 2013 +0100
+ * Date: Fri Jul 19 14:33:31 2013 +0100
  *
  */
  
@@ -3330,7 +3330,7 @@ function AgendaView(element, calendar, viewName) {
 		
 		slotScroller.height(bodyHeight - allDayHeight - 1);
 		
-		slotHeight = slotTableFirstInner.height() + 1; // +1 for border
+		slotHeight = slotTableFirstInner.height() + 2; // +1 for border
 		
 		if (dateChanged) {
 			resetScroll();
