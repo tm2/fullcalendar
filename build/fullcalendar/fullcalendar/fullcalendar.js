@@ -3372,7 +3372,7 @@ function AgendaView(element, calendar, viewName) {
 		
 		colWidth = Math.floor((slotTableWidth - axisWidth) / colCnt);
 		setOuterWidth(dayHeadCells.slice(0, -1), colWidth);
-		$(".fc-session-slot").width(colWidth);
+		$(".fc-session-slot").width(colWidth-1);
 	}
 	
 
