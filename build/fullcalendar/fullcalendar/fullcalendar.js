@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Fri Jul 19 14:33:31 2013 +0100
+ * Date: Mon Jul 22 15:54:22 2013 +0100
  *
  */
  
@@ -3372,7 +3372,7 @@ function AgendaView(element, calendar, viewName) {
 		
 		colWidth = Math.floor((slotTableWidth - axisWidth) / colCnt);
 		setOuterWidth(dayHeadCells.slice(0, -1), colWidth);
-		$(".fc-session-slot").width(colWidth-1);
+		$(".fc-session-slot").width(colWidth);
 	}
 	
 
