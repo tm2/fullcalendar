@@ -1,4 +1,3 @@
-
 setDefaults({
 	allDaySlot: true,
 	allDayText: 'all-day',
@@ -500,6 +499,8 @@ function AgendaView(element, calendar, viewName) {
 
 	function renderSlotOverlay(overlayStart, overlayEnd) {
 		var dayStart = cloneDate(t.visStart);
+		dayStart.setHours(dayStart.getUTCHours());
+		dayStart.setMinutes(dayStart.getUTCMinutes());
 		var dayEnd = addDays(cloneDate(dayStart), 1);
 		for (var i=0; i<colCnt; i++) {
 			var stretchStart = new Date(Math.max(dayStart, overlayStart));
@@ -791,7 +792,7 @@ function AgendaView(element, calendar, viewName) {
 	
 	function dragStart(_dragElement, ev, ui) {
 		hoverListener.start(function(cell) {
-			clearOverlays();
+			clearOverlayres();
 			if (cell) {
 				if (cellIsAllDay(cell)) {
 					renderCellOverlay(cell.row, cell.col, cell.row, cell.col);
