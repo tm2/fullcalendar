@@ -792,7 +792,7 @@ function AgendaView(element, calendar, viewName) {
 	
 	function dragStart(_dragElement, ev, ui) {
 		hoverListener.start(function(cell) {
-			clearOverlayres();
+			clearOverlays();
 			if (cell) {
 				if (cellIsAllDay(cell)) {
 					renderCellOverlay(cell.row, cell.col, cell.row, cell.col);
