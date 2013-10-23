@@ -64,6 +64,9 @@ function AgendaWeekView(element, calendar) {
 			var session = _sessions[s];
 			var selector = [];
 			var time = cloneDate(t.start)
+			//hack to deal with daylight savings
+			time.setMinutes(time.getMinutes() + time.getTimezoneOffset())
+			
 			var ts = ((session.start.getDay() - opt('firstDay')) + 7) % 7;
 
 			if(opt('weekends') == false && opt('firstDay') == 0)

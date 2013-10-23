@@ -55,6 +55,9 @@ function AgendaDayView(element, calendar) {
 			var selector = [];
 			var time = cloneDate(t.start)
 
+			//hack to deal with daylight savings
+			time.setMinutes(time.getMinutes() + time.getTimezoneOffset())
+
 			for(var i=0; i<slotNum; i++)
 			{
 				if((time >= session.start) && (time < session.end))
