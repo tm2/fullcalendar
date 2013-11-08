@@ -358,7 +358,7 @@ function AgendaView(element, calendar, viewName) {
 		
 		slotScroller.height(bodyHeight - allDayHeight - 1);
 		
-		slotHeight = slotTableFirstInner.height() + 2; // +1 for border
+		slotHeight = slotTableFirstInner.height() + 1; // +1 for border
 		
 		if (dateChanged) {
 			resetScroll();
