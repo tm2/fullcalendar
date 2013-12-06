@@ -45,7 +45,7 @@ function AgendaWeekView(element, calendar) {
 	}
 
 	function clearSessions(){
-		var nodes = $("tbody").find(".active").css("background", "transparent").removeClass("active");
+		var nodes = $("tbody").find(".active").css("background", "transparent").removeClass("active").attr("location", 0);;
 		nodes.find(".title").html("");
 	}
 
