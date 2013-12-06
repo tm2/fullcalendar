@@ -51,7 +51,7 @@ function MonthView(element, calendar) {
 	}
 
 	function clearSessions(){
-		$("tbody").find(".active").css("background", "transparent").removeClass("active").attr("location", 0);;
+		$("tbody").find(".active").css("background", "transparent").removeClass("active").attr("data-location", 0);
 	}
 
 	function renderSessions(sessions) {}

@@ -35,7 +35,7 @@ function AgendaDayView(element, calendar) {
 	}
 
 	function clearSessions(){
-		var nodes = $("tbody").find(".active").css("background", "transparent").removeClass("active").attr("location", 0);;
+		var nodes = $("tbody").find(".active").css("background", "transparent").removeClass("active").attr("data-location", 0);
 		nodes.find(".title").html("");
 	}
 
