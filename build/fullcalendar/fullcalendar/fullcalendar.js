@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Mon Jul 22 16:02:06 2013 +0100
+ * Date: Wed Oct 23 10:52:12 2013 +0100
  *
  */
  
@@ -2867,6 +2867,9 @@ function AgendaWeekView(element, calendar) {
 			var session = _sessions[s];
 			var selector = [];
 			var time = cloneDate(t.start)
+			//hack to deal with daylight savings
+			time.setMinutes(time.getMinutes() + time.getTimezoneOffset())
+			
 			var ts = ((session.start.getDay() - opt('firstDay')) + 7) % 7;
 
 			if(opt('weekends') == false && opt('firstDay') == 0)
@@ -2948,6 +2951,9 @@ function AgendaDayView(element, calendar) {
 			var selector = [];
 			var time = cloneDate(t.start)
 
+			//hack to deal with daylight savings
+			time.setMinutes(time.getMinutes() + time.getTimezoneOffset())
+
 			for(var i=0; i<slotNum; i++)
 			{
 				if((time >= session.start) && (time < session.end))
@@ -2969,7 +2975,6 @@ function AgendaDayView(element, calendar) {
 	
 
 }
-
 setDefaults({
 	allDaySlot: true,
 	allDayText: 'all-day',
@@ -3330,7 +3335,7 @@ function AgendaView(element, calendar, viewName) {
 		
 		slotScroller.height(bodyHeight - allDayHeight - 1);
 		
-		slotHeight = slotTableFirstInner.height() + 2; // +1 for border
+		slotHeight = slotTableFirstInner.height() + 1; // +1 for border
 		
 		if (dateChanged) {
 			resetScroll();
@@ -3471,6 +3476,8 @@ function AgendaView(element, calendar, viewName) {
 
 	function renderSlotOverlay(overlayStart, overlayEnd) {
 		var dayStart = cloneDate(t.visStart);
+		dayStart.setHours(dayStart.getUTCHours());
+		dayStart.setMinutes(dayStart.getUTCMinutes());
 		var dayEnd = addDays(cloneDate(dayStart), 1);
 		for (var i=0; i<colCnt; i++) {
 			var stretchStart = new Date(Math.max(dayStart, overlayStart));
