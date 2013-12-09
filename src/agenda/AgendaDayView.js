@@ -35,7 +35,7 @@ function AgendaDayView(element, calendar) {
 	}
 
 	function clearSessions(){
-		var nodes = $("tbody").find(".active").css("background", "transparent").removeClass("active").attr("data-location", 0);
+		var nodes = $(".fc tbody").find(".active").css("background", "transparent").removeClass("active").attr("data-location", 0);
 		nodes.find(".title").html("");
 	}
 
@@ -68,7 +68,7 @@ function AgendaDayView(element, calendar) {
 				
 			}
 
-			var nodes = $("tbody").find(selector.join())
+			var nodes = $(".fc tbody").find(selector.join())
 								  .attr("data-location", session.location)
 								  .addClass("active")
 								  .css("background", session.colour? session.colour : "white")
