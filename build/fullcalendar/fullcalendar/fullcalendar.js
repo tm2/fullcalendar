@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Mon Dec 9 17:06:38 2013 +0000
+ * Date: Fri Jan 10 11:38:54 2014 +0000
  *
  */
  
@@ -4154,9 +4154,7 @@ function AgendaEventRenderer() {
 						"</ul>" +
 					"</div>" +
 					"<div class='column fc-event-title'>" +
-						"<span>" +
-							htmlEscape(event.title) +
-						"</span>" +
+						event.title +
 					"</div>" +
 				"</div>" +
 				"<div class='fc-event-bg'></div>" +
@@ -4903,7 +4901,7 @@ function DayEventRenderer() {
 					"</span>";
 			}
 			html +=
-				"<span class='fc-event-title'>" + htmlEscape(event.title) + "</span>" +
+				"<div class='fc-event-title'>" + event.title + "</div>" +
 				"</div>";
 			if (seg.isEnd && isEventResizable(event)) {
 				html +=
