@@ -359,9 +359,7 @@ function AgendaEventRenderer() {
 						"</ul>" +
 					"</div>" +
 					"<div class='column fc-event-title'>" +
-						"<span>" +
-							htmlEscape(event.title) +
-						"</span>" +
+						event.title +
 					"</div>" +
 				"</div>" +
 				"<div class='fc-event-bg'></div>" +
