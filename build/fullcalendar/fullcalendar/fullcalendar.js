@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Fri Dec 6 10:29:55 2013 +0000
+ * Date: Mon Dec 9 17:06:38 2013 +0000
  *
  */
  
@@ -2087,7 +2087,7 @@ function MonthView(element, calendar) {
 	}
 
 	function clearSessions(){
-		$("tbody").find(".active").css("background", "transparent").removeClass("active").attr("data-location", 0);
+		$(".fc tbody").find(".active").css("background", "transparent").removeClass("active").attr("data-location", 0);
 	}
 
 	function renderSessions(sessions) {}
@@ -2848,7 +2848,7 @@ function AgendaWeekView(element, calendar) {
 	}
 
 	function clearSessions(){
-		var nodes = $("tbody").find(".active").css("background", "transparent").removeClass("active").attr("data-location", 0);
+		var nodes = $(".fc tbody").find(".active").css("background", "transparent").removeClass("active").attr("data-location", 0);
 		nodes.find(".title").html("");
 	}
 
@@ -2886,7 +2886,7 @@ function AgendaWeekView(element, calendar) {
 				addMinutes(time, interval);
 			}
 
-			var nodes = $("tbody").find(selector.join())
+			var nodes = $(".fc tbody").find(selector.join())
 								  .attr("data-location", session.location)
 								  .addClass("active")
 								  .css("background", session.colour? session.colour : "white")
@@ -2931,7 +2931,7 @@ function AgendaDayView(element, calendar) {
 	}
 
 	function clearSessions(){
-		var nodes = $("tbody").find(".active").css("background", "transparent").removeClass("active").attr("data-location", 0);
+		var nodes = $(".fc tbody").find(".active").css("background", "transparent").removeClass("active").attr("data-location", 0);
 		nodes.find(".title").html("");
 	}
 
@@ -2964,7 +2964,7 @@ function AgendaDayView(element, calendar) {
 				
 			}
 
-			var nodes = $("tbody").find(selector.join())
+			var nodes = $(".fc tbody").find(selector.join())
 								  .attr("data-location", session.location)
 								  .addClass("active")
 								  .css("background", session.colour? session.colour : "white")
