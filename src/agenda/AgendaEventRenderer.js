@@ -359,11 +359,20 @@ function AgendaEventRenderer() {
 						"</ul>" +
 					"</div>" +
 					"<div class='column fc-event-title'>" +
-						event.title +
-					"</div>" +
-				"</div>" +
-				"<div class='fc-event-bg'></div>" +
-			"</div>"; // close inner
+						"<b>" + event.title + "</b>" +
+						"<div>" + 
+							event.start.format("HH:MM") +
+							" - " +
+							event.end.format("HH:MM") +
+						"</div>"
+		if(event.stock)
+			html += "<div>" + event.stock.description + "</div>"
+
+		if(event.notes)
+			html += "<div>" + event.notes + "</div>"
+
+		html +="</div></div><div class='fc-event-bg'></div></div>"; // close inner
+		
 		if (seg.isEnd && isEventResizable(event)) {
 			html += "<div class='ui-resizable-handle ui-resizable-s'>=</div>";
 		}
