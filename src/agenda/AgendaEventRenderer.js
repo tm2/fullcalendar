@@ -299,6 +299,8 @@ function AgendaEventRenderer() {
 			html += "div";
 		}
 
+		html += " event-id=" + event.id;
+
 		var icons = ""
 
 		switch(event.type)
