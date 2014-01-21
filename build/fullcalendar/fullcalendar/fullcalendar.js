@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Mon Jan 13 10:26:11 2014 +0000
+ * Date: Tue Jan 21 15:29:15 2014 +0000
  *
  */
  
@@ -4093,6 +4093,8 @@ function AgendaEventRenderer() {
 		}else{
 			html += "div";
 		}
+
+		html += " event-id=" + event.id;
 
 		var icons = ""
 
