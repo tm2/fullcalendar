@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Tue Jan 21 15:29:15 2014 +0000
+ * Date: Mon Mar 31 09:55:28 2014 +0100
  *
  */
  
@@ -3571,7 +3571,7 @@ function AgendaView(element, calendar, viewName) {
 			slotIndex--;
 		}
 		if (slotIndex >= 0) {
-			addMinutes(d, (minMinute + slotIndex * opt('slotMinutes')) + d.getTimezoneOffset());
+			addMinutes(d, (minMinute + slotIndex * opt('slotMinutes')));
 		}
 		return d;
 	}
