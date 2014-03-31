@@ -594,7 +594,7 @@ function AgendaView(element, calendar, viewName) {
 			slotIndex--;
 		}
 		if (slotIndex >= 0) {
-			addMinutes(d, (minMinute + slotIndex * opt('slotMinutes')) + d.getTimezoneOffset());
+			addMinutes(d, (minMinute + slotIndex * opt('slotMinutes')));
 		}
 		return d;
 	}
