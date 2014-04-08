@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Mon Mar 31 09:55:28 2014 +0100
+ * Date: Mon Mar 31 11:38:32 2014 +0100
  *
  */
  
@@ -2916,13 +2916,14 @@ function AgendaDayView(element, calendar) {
 	
 	
 	function render(date, delta) {
+		debugger
 		if (delta) {
 			addDays(date, delta);
 			if (!opt('weekends')) {
 				skipWeekend(date, delta < 0 ? -1 : 1);
 			}
 		}
-		var start = cloneDate(date, true);
+		var start = cloneDate(date, false);
 		var end = addDays(cloneDate(start), 1);
 		t.title = formatDate(date, opt('titleFormat'));
 		t.start = t.visStart = start;
