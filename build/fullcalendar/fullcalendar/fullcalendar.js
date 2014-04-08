@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Mon Mar 31 11:38:32 2014 +0100
+ * Date: Tue Apr 8 13:07:01 2014 +0100
  *
  */
  
@@ -2916,7 +2916,6 @@ function AgendaDayView(element, calendar) {
 	
 	
 	function render(date, delta) {
-		debugger
 		if (delta) {
 			addDays(date, delta);
 			if (!opt('weekends')) {
