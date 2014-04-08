@@ -747,7 +747,6 @@ function AgendaView(element, calendar, viewName) {
 	
 	
 	function slotSelectionMousedown(ev) {
-		// debugger
 		if (ev.which == 1 && opt('selectable')) { // ev.which==1 means left mouse button
 			unselect(ev);
 			var dates;

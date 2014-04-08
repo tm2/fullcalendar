@@ -20,7 +20,6 @@ function AgendaDayView(element, calendar) {
 	
 	
 	function render(date, delta) {
-		debugger
 		if (delta) {
 			addDays(date, delta);
 			if (!opt('weekends')) {
