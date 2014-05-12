@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Tue Apr 8 13:07:01 2014 +0100
+ * Date: Mon May 12 09:25:07 2014 +0100
  *
  */
  
@@ -3480,8 +3480,11 @@ function AgendaView(element, calendar, viewName) {
 		dayStart.setMinutes(dayStart.getUTCMinutes());
 		var dayEnd = addDays(cloneDate(dayStart), 1);
 		for (var i=0; i<colCnt; i++) {
-			var stretchStart = new Date(Math.max(dayStart, overlayStart));
-			var stretchEnd = new Date(Math.min(dayEnd, overlayEnd));
+			// Messes with utc selection for dst
+			// var stretchStart = new Date(Math.max(dayStart, overlayStart));
+			// var stretchEnd = new Date(Math.min(dayEnd, overlayEnd));
+			var stretchStart = new Date(overlayStart);
+			var stretchEnd = new Date(overlayEnd);
 			if (stretchStart < stretchEnd) {
 				var col = i*dis+dit;
 				var rect = coordinateGrid.rect(0, col, 0, col, slotContent); // only use it for horizontal coords
