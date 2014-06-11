@@ -349,6 +349,10 @@ function AgendaEventRenderer() {
 				icons += "<li><i class='icon-list-alt other'></i></li>";
 				break;
 		}
+		
+		if (event.bookingMethod == 'ON') {
+      			icons += "<li><i class='icon-pronto'></i></li>";
+    		}
 			
 		html +=
 			" class='" + classes.join(' ') + "'" +
