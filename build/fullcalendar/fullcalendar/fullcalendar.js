@@ -11,7 +11,7 @@
  * Dual licensed under the MIT and GPL licenses, located in
  * MIT-LICENSE.txt and GPL-LICENSE.txt respectively.
  *
- * Date: Mon May 12 09:25:07 2014 +0100
+ * Date: Wed Jun 11 09:34:44 2014 +0100
  *
  */
  
@@ -4146,6 +4146,10 @@ function AgendaEventRenderer() {
 				icons += "<li><i class='icon-list-alt other'></i></li>";
 				break;
 		}
+		
+		if (event.bookingMethod == 'ON') {
+      			icons += "<li><i class='icon-pronto'></i></li>";
+    		}
 			
 		html +=
 			" class='" + classes.join(' ') + "'" +
