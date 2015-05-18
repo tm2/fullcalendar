@@ -4071,7 +4071,8 @@ function AgendaEventRenderer() {
 	}
 	
 	
-	function slotSegHtml(event, seg) {
+	function slotSegHtml(event, seg) {		
+		var deStyle = "";
 		var html = "<";
 		var url = event.url;
 		var skinCss = getSkinCss(event, opt);
@@ -4107,20 +4108,29 @@ function AgendaEventRenderer() {
 				{
 					case 0: //Booked
 						icons += "<li><i class='icon-circle booked'></i></li>";
+						deStyle += " diary-entry-booked";
 						break;
 					case 1: //Arrived
 						icons += "<li><i class='icon-circle arrived'></i></li>";
+						deStyle += " diary-entry-arrived";
 						break;
 					case 2: //Completed
 						icons += "<li><i class='icon-ok completed'></i></li>";
+						deStyle += " diary-entry-completed";
 						break;
 					case 3: //DNA
 						icons += "<li><i class='icon-circle did-not-attend'></i></li>";
+						deStyle += " diary-entry-dna";
 						break;
 					case 4: //Cancelled
 						icons += "<li><i class='icon-remove cancelled'></i></li>";
+						deStyle += " diary-entry-cancelled";
 						break;
-					case 5: //Provisional
+					case 5: //Temporary
+						break;
+					case 6: //Provisional
+						debugger
+						deStyle += " diary-entry-provisional";
 						break;
 				}
 				if(event.onlineBooking == true)
@@ -4152,7 +4162,7 @@ function AgendaEventRenderer() {
     		}
 			
 		html +=
-			" class='" + classes.join(' ') + "'" +
+			" class='" + classes.join(' ') + deStyle + "'" +
 			" style='position:absolute;z-index:8;top:" + seg.top + "px;left:" + seg.left + "px;" + skinCss + "'>" +
 			"<div class='fc-event-inner'>" +
 				"<div class='grid fc-event-content'>" +
