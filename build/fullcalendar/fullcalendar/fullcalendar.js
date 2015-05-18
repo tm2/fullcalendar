@@ -4129,7 +4129,6 @@ function AgendaEventRenderer() {
 					case 5: //Temporary
 						break;
 					case 6: //Provisional
-						debugger
 						deStyle += " diary-entry-provisional";
 						break;
 				}
