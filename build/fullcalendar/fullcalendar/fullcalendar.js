@@ -2112,6 +2112,8 @@ function BasicWeekView(element, calendar) {
 	
 	
 	function render(date, delta) {
+		if (typeof(date) == "string")
+			date = new Date(date);
 		if (delta) {
 			addDays(date, delta * 7);
 		}
@@ -2823,6 +2825,8 @@ function AgendaWeekView(element, calendar) {
 	
 	
 	function render(date, delta) {
+		if (typeof(date) == "string")
+			date = new Date(date);
 		if (delta) {
 			addDays(date, delta * 7);
 		}
