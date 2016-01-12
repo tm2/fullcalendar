@@ -2949,8 +2949,8 @@ function AgendaDayView(element, calendar) {
 		{
 			var session = _sessions[s];			
 			//uk to local timezone hack
-			session.start = moment(session.start).tz(jstz.determine().name())._d
-			session.end = moment(session.end).tz(jstz.determine().name())._d
+			session.start = (moment.tz != undefined) ? moment.tz(session.start, jstz.determine().name())._d : session.start;
+			session.end = (moment.tz != undefined) ? moment.tz(session.end, jstz.determine().name())._d : session.end;
 			
 			var selector = [];
 			var time = cloneDate(t.start)
