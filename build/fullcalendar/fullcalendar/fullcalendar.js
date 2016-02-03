@@ -4127,7 +4127,7 @@ function AgendaEventRenderer() {
 						deStyle += " diary-entry-completed";
 						break;
 					case 3: //DNA
-						icons += "<li><i class='icon-circle did-not-attend'></i></li>";
+						icons += "<li><i class='icon-warning-sign did-not-attend'></i></li>";
 						deStyle += " diary-entry-dna";
 						break;
 					case 4: //Cancelled
