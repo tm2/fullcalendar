@@ -656,11 +656,11 @@ table.fc-border-separate {
 
 .fc-event-content li > i.did-not-attend:before {
 	/*background: -webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#888888),color-stop(100%,#000000));*/
-	color: #888888;
+	color: #FFA500;
 	background: -webkit-linear-gradient(transparent, transparent), 
-				-webkit-gradient(linear, right top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#888888),color-stop(100%,#000000));
+				-webkit-gradient(linear, right top, right bottom, color-stop(0%,#FF7200), color-stop(50%,#FF7200),color-stop(100%,#FFA500));
 	-webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #888;
+    -webkit-text-stroke-color: #FFA500;
 	-webkit-background-clip: text;
 }
 
