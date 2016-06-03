@@ -4108,6 +4108,7 @@ function AgendaEventRenderer() {
 		html += " event-id=" + event.id;
 
 		var icons = ""
+		var apptTitle = ""
 
 		switch(event.type)
 		{
@@ -4165,8 +4166,17 @@ function AgendaEventRenderer() {
 		}
 		
 		if (event.bookingMethod == 'ON') {
-      			icons += "<li><i class='icon-pronto'></i></li>";
-    		}
+  		icons += "<li><i class='icon-pronto'></i></li>";
+		}
+		if (event.isFirstApptInCase == true) {
+			apptTitle = "<span><strong>" + event.title + "</strong></span>"
+		}
+		else if (event.isFirstAppt == true) {
+			apptTitle = "<span><strong>*" + event.title + "</strong></span>"
+		}
+		else {
+			apptTitle = "<span>" + event.title + "</span>"
+		}
 			
 		html +=
 			" class='" + classes.join(' ') + deStyle + "'" +
@@ -4179,7 +4189,7 @@ function AgendaEventRenderer() {
 						"</ul>" +
 					"</div>" +
 					"<div class='column fc-event-title'>" +
-						"<b>" + event.title + "</b>" +
+						apptTitle +
 						"<div>" + 
 							event.start.format("HH:MM") +
 							" - " +
